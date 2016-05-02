@@ -21,8 +21,10 @@ namespace WebApplication1.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public DbSet<Assignment> Assignments { get; set; }
-        public DbSet<AssignmentMilestone> Milestones { get; set; }
+        public DbSet<Assignment>          Assignments { get; set; }
+        public DbSet<AssignmentMilestone> Milestones  { get; set; }
+        public DbSet<Course>              Courses     { get; set; }
+
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
