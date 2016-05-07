@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using WebApplication1.Models.Entities;
+using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace WebApplication1.Models
 {
@@ -21,12 +22,7 @@ namespace WebApplication1.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public DbSet<Assignment>          Assignments { get; set; }
-        public DbSet<AssignmentMilestone> Milestones  { get; set; }
-        public DbSet<Course>              Courses     { get; set; }
-
-
-        public ApplicationDbContext()
+		public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
