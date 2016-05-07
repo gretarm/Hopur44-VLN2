@@ -3,8 +3,25 @@
     ViewBag.Title = "C++ Compile test page";
 }
 
+<h2>Welcome back, Breyta mer </h2>
+
+<p>Select a course</p>
 <div class="row">
+    @for (int i = 0; i < 4; i++)
+    {
+        <input type="button" value="Course @i " class="btn btn-default menuButton" />
+    }
+</div>
+
+
+<div class="row">
+    <h2>@ViewBag.Title.</h2>
+    <ol class="breadcrumb">
+        <li class="active">Home</li>
+    </ol>
+
     <div class="col-md-4">
+
 
         @using (Html.BeginForm())
         {
