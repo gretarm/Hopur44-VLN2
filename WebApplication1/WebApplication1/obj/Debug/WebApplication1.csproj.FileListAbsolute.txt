@@ -159,7 +159,6 @@ C:\Users\notandi\Hopur44-VLN2\WebApplication1\WebApplication1\bin\Microsoft.Owin
 C:\Users\notandi\Hopur44-VLN2\WebApplication1\WebApplication1\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\notandi\Hopur44-VLN2\WebApplication1\WebApplication1\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\notandi\Hopur44-VLN2\WebApplication1\WebApplication1\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-C:\Users\notandi\Hopur44-VLN2\WebApplication1\WebApplication1\obj\Debug\WebApplication1.csprojResolveAssemblyReference.cache
 C:\Users\notandi\Hopur44-VLN2\WebApplication1\WebApplication1\obj\Debug\WebApplication1.dll
 C:\Users\notandi\Hopur44-VLN2\WebApplication1\WebApplication1\obj\Debug\WebApplication1.pdb
 E:\HR\VLN2\Hopur44-VLN2\WebApplication1\WebApplication1\bin\ApplicationInsights.config
@@ -244,3 +243,8 @@ E:\HR\VLN2\Hopur44-VLN2\WebApplication1\WebApplication1\bin\Microsoft.Owin.Secur
 E:\HR\VLN2\Hopur44-VLN2\WebApplication1\WebApplication1\obj\Debug\WebApplication1.csprojResolveAssemblyReference.cache
 E:\HR\VLN2\Hopur44-VLN2\WebApplication1\WebApplication1\obj\Debug\WebApplication1.dll
 E:\HR\VLN2\Hopur44-VLN2\WebApplication1\WebApplication1\obj\Debug\WebApplication1.pdb
+C:\Users\notandi\Hopur44-VLN2\WebApplication1\WebApplication1\obj\Debug\WebApplication1.Migrations.initialSetup.resources
+C:\Users\notandi\Hopur44-VLN2\WebApplication1\WebApplication1\obj\Debug\WebApplication1.csproj.GenerateResource.Cache
+C:\Users\notandi\Hopur44-VLN2\WebApplication1\WebApplication1\obj\Debug\WebApplication1.csprojResolveAssemblyReference.cache
+C:\Users\notandi\Hopur44-VLN2\WebApplication1\WebApplication1\obj\Debug\WebApplication1.Migrations.DeletedStudentandTeacheraddedUser.resources
+C:\Users\notandi\Hopur44-VLN2\WebApplication1\WebApplication1\obj\Debug\WebApplication1.Migrations.AddedSubmissionEditedClasses.resources
