@@ -1,9 +1,9 @@
-﻿
+﻿@using Microsoft.AspNet.Identity
 @{
     ViewBag.Title = "C++ Compile test page";
 }
 
-<h2>Welcome back, Breyta mer </h2>
+<h2>Welcome back @Html.ActionLink(User.Identity.GetUserName(), "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" }) !</h2>
 
 <p>Select a course</p>
 <div class="row">
