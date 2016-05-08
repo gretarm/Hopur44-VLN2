@@ -4,24 +4,41 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Diagnostics;
+using Microsoft.AspNet.Identity;
+using WebApplication1.Models;
 
 namespace WebApplication1.Controllers
 {
     [Authorize]
     public class HomeController : Controller
     {
+        [Authorize]
         public ActionResult Index()
         {
+            IdentityManager redirect = new IdentityManager();
+
+            if (redirect.UserIsInRole(User.Identity.GetUserId(), "Student"))
+            {
+                return View("Student");
+            }
+            if (redirect.UserIsInRole(User.Identity.GetUserId(), "Teacher"))
+            {
+                return View("Teacher");
+            }
+            if (redirect.UserIsInRole(User.Identity.GetUserId(), "Admin"))
+            {
+                return View("Admin");
+            }
             return View();
         }
-
+        [AllowAnonymous]
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
 
             return View();
         }
-
+        [AllowAnonymous]
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
