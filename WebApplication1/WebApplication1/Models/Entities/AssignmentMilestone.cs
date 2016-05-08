@@ -29,5 +29,7 @@ namespace WebApplication1.Models.Entities
 		/// For example: If this milestone weighs 15% then this property contains the value of 15
 		/// </summary>
 		public int Weight { get; set; }
-	}
+
+        public virtual ICollection<Submission> Submissions { get; set; }
+    }
 }

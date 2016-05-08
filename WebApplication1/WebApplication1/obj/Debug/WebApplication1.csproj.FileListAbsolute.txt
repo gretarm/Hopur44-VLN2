@@ -248,3 +248,4 @@ C:\Users\notandi\Hopur44-VLN2\WebApplication1\WebApplication1\obj\Debug\WebAppli
 C:\Users\notandi\Hopur44-VLN2\WebApplication1\WebApplication1\obj\Debug\WebApplication1.csprojResolveAssemblyReference.cache
 C:\Users\notandi\Hopur44-VLN2\WebApplication1\WebApplication1\obj\Debug\WebApplication1.Migrations.DeletedStudentandTeacheraddedUser.resources
 C:\Users\notandi\Hopur44-VLN2\WebApplication1\WebApplication1\obj\Debug\WebApplication1.Migrations.AddedSubmissionEditedClasses.resources
+C:\Users\notandi\Hopur44-VLN2\WebApplication1\WebApplication1\obj\Debug\WebApplication1.Migrations.AddedNavigationPropertiestoclasses.resources

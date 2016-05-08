@@ -215,6 +215,10 @@
     <Compile Include="Migrations\201605071730263_Added Submission, Edited Classes.Designer.cs">
       <DependentUpon>201605071730263_Added Submission, Edited Classes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605081703356_Added NavigationProperties to classes.cs" />
+    <Compile Include="Migrations\201605081703356_Added NavigationProperties to classes.Designer.cs">
+      <DependentUpon>201605081703356_Added NavigationProperties to classes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Entities\Assignment.cs" />
@@ -313,6 +317,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605071730263_Added Submission, Edited Classes.resx">
       <DependentUpon>201605071730263_Added Submission, Edited Classes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605081703356_Added NavigationProperties to classes.resx">
+      <DependentUpon>201605081703356_Added NavigationProperties to classes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

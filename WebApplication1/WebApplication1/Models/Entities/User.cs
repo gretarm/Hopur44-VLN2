@@ -10,5 +10,7 @@ namespace WebApplication1.Models.Entities
         public int ID { get; set; }
         public string Name { get; set; }
 
+        public ICollection<Enrollment> Enrollments{ get; set; }
+
     }
 }

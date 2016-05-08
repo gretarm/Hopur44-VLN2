@@ -10,5 +10,8 @@ namespace WebApplication1.Models.Entities
     {
         public int CourseID { get; set; }
         public string Title { get; set; }
+
+        public virtual ICollection<Enrollment> Enrollments { get; set; }
+        public virtual ICollection<Assignment> Assignments { get; set; }
     }
 }
