@@ -34,7 +34,7 @@ textarea {
 .menuButton
 {
     height: 100px;
-    width: 100px;
+    /*width: 100px;*/
     margin-left: 5%;
     margin-right: 5%;
     border-width: 2px;

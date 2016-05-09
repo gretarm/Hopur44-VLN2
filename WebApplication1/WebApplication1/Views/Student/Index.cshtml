@@ -1,7 +1,13 @@
-﻿
+﻿@model IEnumerable<WebApplication1.Models.Entities.Course>
+
 @{
     ViewBag.Title = "Index";
 }
 
 <h2>Student</h2>
 
+
+@foreach (var item in Model)
+{
+    <input type="button" class="btn btn-default menuButton" value="@Html.DisplayFor(modelItem => item.Title)" />
+}
