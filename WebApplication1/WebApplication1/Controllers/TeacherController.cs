@@ -9,6 +9,7 @@ using WebApplication1.Models.Entities;
 
 namespace WebApplication1.Controllers
 {
+    [Authorize(Roles = "Teacher")]
     public class TeacherController : Controller
     {
 

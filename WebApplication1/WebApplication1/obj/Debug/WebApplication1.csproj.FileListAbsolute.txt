@@ -159,10 +159,6 @@ E:\HR\VLN2\Hopur44-VLN2\WebApplication1\WebApplication1\bin\Microsoft.Owin.Secur
 E:\HR\VLN2\Hopur44-VLN2\WebApplication1\WebApplication1\bin\Microsoft.Owin.Security.Google.xml
 E:\HR\VLN2\Hopur44-VLN2\WebApplication1\WebApplication1\bin\Microsoft.Owin.Security.Twitter.xml
 E:\HR\VLN2\Hopur44-VLN2\WebApplication1\WebApplication1\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-E:\HR\VLN2\Hopur44-VLN2\WebApplication1\WebApplication1\obj\Debug\WebApplication1.Migrations.initialSetup.resources
-E:\HR\VLN2\Hopur44-VLN2\WebApplication1\WebApplication1\obj\Debug\WebApplication1.Migrations.DeletedStudentandTeacheraddedUser.resources
-E:\HR\VLN2\Hopur44-VLN2\WebApplication1\WebApplication1\obj\Debug\WebApplication1.Migrations.AddedSubmissionEditedClasses.resources
-E:\HR\VLN2\Hopur44-VLN2\WebApplication1\WebApplication1\obj\Debug\WebApplication1.Migrations.AddedNavigationPropertiestoclasses.resources
 E:\HR\VLN2\Hopur44-VLN2\WebApplication1\WebApplication1\obj\Debug\WebApplication1.csproj.GenerateResource.Cache
 E:\HR\VLN2\Hopur44-VLN2\WebApplication1\WebApplication1\obj\Debug\WebApplication1.dll
 E:\HR\VLN2\Hopur44-VLN2\WebApplication1\WebApplication1\obj\Debug\WebApplication1.pdb
@@ -339,3 +335,5 @@ C:\Users\notandi\Hopur44-VLN2\WebApplication1\WebApplication1\obj\Debug\WebAppli
 C:\Users\notandi\Hopur44-VLN2\WebApplication1\WebApplication1\obj\Debug\WebApplication1.Migrations.Init.resources
 C:\Users\notandi\Hopur44-VLN2\WebApplication1\WebApplication1\obj\Debug\WebApplication1.csproj.GenerateResource.Cache
 C:\GIT\Hopur44-VLN2\WebApplication1\WebApplication1\obj\Debug\WebApplication1.Migrations.Init.resources
+E:\HR\VLN2\Hopur44-VLN2\WebApplication1\WebApplication1\obj\Debug\WebApplication1.csprojResolveAssemblyReference.cache
+E:\HR\VLN2\Hopur44-VLN2\WebApplication1\WebApplication1\obj\Debug\WebApplication1.Migrations.Init.resources
