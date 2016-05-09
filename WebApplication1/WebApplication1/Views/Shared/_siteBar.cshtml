@@ -1,5 +1,11 @@
 ﻿@model IEnumerable<WebApplication1.Models.Entities.Assignment>
 
 
-<p>Egill</p>
+<div>
+    <p>Upcomming assignments</p>
 
+    @if (User.IsInRole("Teacher") == true)
+    {
+        <p>No displayed to students</p>
+    }
+</div>
