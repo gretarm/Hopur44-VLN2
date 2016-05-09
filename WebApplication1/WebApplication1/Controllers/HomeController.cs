@@ -4,8 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Diagnostics;
+using System.Web.Security;
 using Microsoft.AspNet.Identity;
 using WebApplication1.Models;
+using WebApplication1.Controllers;
 
 namespace WebApplication1.Controllers
 {
@@ -16,21 +18,12 @@ namespace WebApplication1.Controllers
         public ActionResult Index()
         {
             IdentityManager redirect = new IdentityManager();
+            IList<string> role = redirect.GetUserRoles(User.Identity.GetUserId());
 
-            if (redirect.UserIsInRole(User.Identity.GetUserId(), "Student"))
-            {
-                return View("Student");
-            }
-            if (redirect.UserIsInRole(User.Identity.GetUserId(), "Teacher"))
-            {
-                return View("Teacher");
-            }
-            if (redirect.UserIsInRole(User.Identity.GetUserId(), "Admin"))
-            {
-                return View("Admin");
-            }
-            return View();
+            return RedirectToActionPermanent("Index", role[0]);
         }
+
+
         [AllowAnonymous]
         public ActionResult About()
         {
