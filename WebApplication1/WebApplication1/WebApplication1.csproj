@@ -226,6 +226,10 @@
     <Compile Include="Migrations\201605091143367_Removed user from roles.Designer.cs">
       <DependentUpon>201605091143367_Removed user from roles.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605091208401_varchar á USERID.cs" />
+    <Compile Include="Migrations\201605091208401_varchar á USERID.Designer.cs">
+      <DependentUpon>201605091208401_varchar á USERID.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Entities\Assignment.cs" />
@@ -334,6 +338,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605091143367_Removed user from roles.resx">
       <DependentUpon>201605091143367_Removed user from roles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605091208401_varchar á USERID.resx">
+      <DependentUpon>201605091208401_varchar á USERID.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
