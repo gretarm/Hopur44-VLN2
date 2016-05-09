@@ -27,5 +27,22 @@ namespace WebApplication1.Controllers
            
             return View(cources);
         }
+        [Authorize]
+        public ActionResult Course(int? title)
+        {
+            if (title == null)
+            {
+                return Index();
+            }
+
+            Course course = db.Courses.Find(title);
+
+            if (course == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(course);
+        }
     }
 }
