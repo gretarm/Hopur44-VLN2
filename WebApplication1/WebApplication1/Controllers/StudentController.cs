@@ -8,15 +8,15 @@ using System.Web;
 using System.Net;
 using System.Web.Mvc;
 using WebApplication1.Models.Entities;
-using WebApplication1.DAL;
 using WebApplication1.Controllers;
 using WebApplication1.Services;
+using WebApplication1.Models;
 
 namespace WebApplication1.Controllers
 {
     public class StudentController : Controller
     {
-        private MooshakContext db = new MooshakContext();
+        private ApplicationDbContext db = new ApplicationDbContext();
         // GET: Student
         public ActionResult Index()
         {

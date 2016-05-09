@@ -197,38 +197,17 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
-    <Compile Include="Controllers\AssignmentsController.cs" />
+    <Compile Include="App_Data\AssignmentsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Controllers\TeacherController.cs" />
-    <Compile Include="DAL\MooshakContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201605071448476_initialSetup.cs" />
-    <Compile Include="Migrations\201605071448476_initialSetup.Designer.cs">
-      <DependentUpon>201605071448476_initialSetup.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201605071550079_Deleted Student and Teacher, added User.cs" />
-    <Compile Include="Migrations\201605071550079_Deleted Student and Teacher, added User.Designer.cs">
-      <DependentUpon>201605071550079_Deleted Student and Teacher, added User.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201605071730263_Added Submission, Edited Classes.cs" />
-    <Compile Include="Migrations\201605071730263_Added Submission, Edited Classes.Designer.cs">
-      <DependentUpon>201605071730263_Added Submission, Edited Classes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201605081703356_Added NavigationProperties to classes.cs" />
-    <Compile Include="Migrations\201605081703356_Added NavigationProperties to classes.Designer.cs">
-      <DependentUpon>201605081703356_Added NavigationProperties to classes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201605091143367_Removed user from roles.cs" />
-    <Compile Include="Migrations\201605091143367_Removed user from roles.Designer.cs">
-      <DependentUpon>201605091143367_Removed user from roles.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201605091208401_varchar á USERID.cs" />
-    <Compile Include="Migrations\201605091208401_varchar á USERID.Designer.cs">
-      <DependentUpon>201605091208401_varchar á USERID.cs</DependentUpon>
+    <Compile Include="Migrations\201605091631340_Init.cs" />
+    <Compile Include="Migrations\201605091631340_Init.Designer.cs">
+      <DependentUpon>201605091631340_Init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -237,7 +216,6 @@
     <Compile Include="Models\Entities\Course.cs" />
     <Compile Include="Models\Entities\Enrollment.cs" />
     <Compile Include="Models\Entities\Submission.cs" />
-    <Compile Include="Models\Entities\User.cs" />
     <Compile Include="Models\IdentityManager.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -273,7 +251,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -314,7 +294,9 @@
     <Content Include="Views\Shared\_siteBar.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <EmbeddedResource Include="Migrations\201605091631340_Init.resx">
+      <DependentUpon>201605091631340_Init.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -323,26 +305,6 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201605071448476_initialSetup.resx">
-      <DependentUpon>201605071448476_initialSetup.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201605071550079_Deleted Student and Teacher, added User.resx">
-      <DependentUpon>201605071550079_Deleted Student and Teacher, added User.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201605071730263_Added Submission, Edited Classes.resx">
-      <DependentUpon>201605071730263_Added Submission, Edited Classes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201605081703356_Added NavigationProperties to classes.resx">
-      <DependentUpon>201605081703356_Added NavigationProperties to classes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201605091143367_Removed user from roles.resx">
-      <DependentUpon>201605091143367_Removed user from roles.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201605091208401_varchar á USERID.resx">
-      <DependentUpon>201605091208401_varchar á USERID.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

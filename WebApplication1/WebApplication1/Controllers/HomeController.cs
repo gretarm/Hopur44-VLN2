@@ -8,7 +8,6 @@ using System.Web.Security;
 using Microsoft.AspNet.Identity;
 using WebApplication1.Models;
 using WebApplication1.Controllers;
-using WebApplication1.DAL;
 
 namespace WebApplication1.Controllers
 {

@@ -11,6 +11,8 @@ namespace WebApplication1.Models
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
+        public ApplicationUser() : base() { }
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
@@ -22,7 +24,24 @@ namespace WebApplication1.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-		public ApplicationDbContext()
+        public override IDbSet<ApplicationUser> Users
+        {
+            get
+            {
+                return (DbSet<ApplicationUser>)base.Users;
+            }
+            set
+            {
+                base.Users = value;
+            }
+        }
+        public DbSet<Enrollment> Enrollments { get; set; }
+        public DbSet<Course> Courses { get; set; }
+        public DbSet<Assignment> Assignments { get; set; }
+        public DbSet<AssignmentMilestone> Milestones { get; set; }
+        public DbSet<Submission> Submissions { get; set; }
+
+        public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }

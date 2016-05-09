@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using WebApplication1.DAL;
 using WebApplication1.Models;
 using WebApplication1.Models.ViewModels;
 
@@ -11,10 +10,10 @@ namespace WebApplication1.Services
     public class AssignmentService
     {
 
-      private MooshakContext _db;
+      private ApplicationDbContext _db;
       public AssignmentService()
         {
-            _db = new MooshakContext();
+            _db = new ApplicationDbContext();
         }
 
       public List<AssignmentViewModel> GetAssignmentsInCourse(int courseID)
