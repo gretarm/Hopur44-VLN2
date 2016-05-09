@@ -24,7 +24,7 @@ namespace WebApplication1.Controllers
             IEnumerable<Course> cources = (from item in db.Courses
                                            orderby item.Title ascending
                                            select item).ToList();
-
+           
             return View(cources);
         }
     }
