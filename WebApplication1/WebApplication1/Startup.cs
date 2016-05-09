@@ -10,12 +10,6 @@ namespace WebApplication1
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
-            IdentityManager roles = new IdentityManager();
-            roles.CreateRole("Admin");
-            roles.CreateRole("Teacher");
-            roles.CreateRole("TeacherAid");
-            roles.CreateRole("Student");
-
         }
     }
 }

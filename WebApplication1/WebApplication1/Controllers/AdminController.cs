@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace WebApplication1.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
         // GET: Admin
@@ -13,5 +14,16 @@ namespace WebApplication1.Controllers
         {
             return View();
         }
+
+        public ActionResult Users()
+        {
+            return View();
+        }
+
+        public ActionResult Courses()
+        {
+            return View();
+        }
+
     }
 }

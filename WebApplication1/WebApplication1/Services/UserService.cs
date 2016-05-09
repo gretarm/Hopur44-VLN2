@@ -7,7 +7,7 @@ using System.Web;
 
 namespace WebApplication1.Models
 {
-    public class IdentityManager
+    public class UserService
     {
         public bool RoleExists(string name)
         {

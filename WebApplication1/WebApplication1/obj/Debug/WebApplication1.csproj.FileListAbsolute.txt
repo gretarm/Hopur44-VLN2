@@ -338,5 +338,4 @@ C:\Users\notandi\Hopur44-VLN2\WebApplication1\WebApplication1\obj\Debug\WebAppli
 C:\Users\notandi\Hopur44-VLN2\WebApplication1\WebApplication1\obj\Debug\WebApplication1.pdb
 C:\Users\notandi\Hopur44-VLN2\WebApplication1\WebApplication1\obj\Debug\WebApplication1.Migrations.Init.resources
 C:\Users\notandi\Hopur44-VLN2\WebApplication1\WebApplication1\obj\Debug\WebApplication1.csproj.GenerateResource.Cache
-C:\GIT\Hopur44-VLN2\WebApplication1\WebApplication1\obj\Debug\WebApplication1.csprojResolveAssemblyReference.cache
 C:\GIT\Hopur44-VLN2\WebApplication1\WebApplication1\obj\Debug\WebApplication1.Migrations.Init.resources

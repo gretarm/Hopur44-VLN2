@@ -18,7 +18,7 @@ namespace WebApplication1.Controllers
         public ActionResult Index()
         {
             //TODO Implement exeption in case missing role
-            IdentityManager redirect = new IdentityManager();
+            UserService redirect = new UserService();
             IList<string> role = redirect.GetUserRoles(User.Identity.GetUserId());
 
             return RedirectToActionPermanent("Index", role[0]);
