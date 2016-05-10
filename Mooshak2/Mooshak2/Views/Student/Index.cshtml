@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Mooshak2.Models.Entities.Course>
+@using Microsoft.AspNet.Identity
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Welcome back, @User.Identity.GetUserName()</h2>
+
+<p>Select a course</p>
+<div class="row">
+
+    @foreach (var item in Model)
+    {
+
+        <div class="col-md-4">
+            <h2>@Html.DisplayFor(modelItem => item.Title)</h2>
+            <p>
+                ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
+                enables a clean separation of concerns and gives you full control over markup
+                for enjoyable, agile development.
+            </p>
+
+            @Html.ActionLink("Go to course \u00BB", item.Title, "Course", routeValues: null, htmlAttributes: new { @class = "btn btn-default" })
+        </div>
+    }
+
+</div>
