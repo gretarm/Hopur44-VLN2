@@ -13,6 +13,7 @@ namespace Mooshak2.Controllers
 {
     /// <summary>
     /// One instance of applacation to be used with all the controllers
+    /// má færa hann í 
     /// </summary>
     public class DatabaseConnection
     {
@@ -35,7 +36,6 @@ namespace Mooshak2.Controllers
     [Authorize]
     public class HomeController : Controller
     {
-        [Authorize]
         public ActionResult Index()
         {
             //TODO Implement exeption in case missing role

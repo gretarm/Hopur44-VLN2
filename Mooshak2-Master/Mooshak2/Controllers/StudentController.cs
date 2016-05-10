@@ -18,6 +18,7 @@ namespace Mooshak2.Controllers
     [Authorize(Roles = "Student")]
     public class StudentController : Controller
     {
+        
         // GET: Student
         public ActionResult Index()
         {

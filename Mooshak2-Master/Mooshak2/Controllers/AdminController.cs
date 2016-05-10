@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Mooshak2.DAL;
 
 namespace Mooshak2.Controllers
 {
@@ -22,6 +23,7 @@ namespace Mooshak2.Controllers
 
         public ActionResult Courses()
         {
+            CoursesService _service = new CoursesService();
             return View();
         }
 
