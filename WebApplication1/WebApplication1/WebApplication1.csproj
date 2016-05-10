@@ -305,6 +305,7 @@
     <Content Include="Views\Admin\Courses.cshtml" />
     <Content Include="Views\Student\Course.cshtml" />
     <Content Include="Views\Assignments\Index.cshtml" />
+    <Content Include="Views\Teacher\Course.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201605091631340_Init.resx">

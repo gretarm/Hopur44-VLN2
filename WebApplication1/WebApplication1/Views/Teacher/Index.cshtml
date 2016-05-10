@@ -7,7 +7,7 @@
 <div class="mainContent body-content col-md-¨4">
     <h2>Teacher</h2>
     @foreach (var item in Model)
-    {
-        <input type="button" class="btn btn-default menuButton" value="@Html.DisplayFor(modelItem => item.Title)" />
+    { 
+        @Html.ActionLink(item.Title + "\u00BB", item.Title, "Teacher/Course", routeValues: null, htmlAttributes: new { @class = "btn btn-default menuButton" })
     }
 </div>
