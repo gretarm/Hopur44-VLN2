@@ -1,18 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.IO;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Net;
 using System.Web.Mvc;
-using WebApplication1.Models.Entities;
-using WebApplication1.Controllers;
-using WebApplication1.Services;
-using WebApplication1.Models;
+using Mooshak2.Models;
+using Mooshak2.Models.Entities;
 
-namespace WebApplication1.Controllers
+namespace Mooshak2.Controllers
 {
     [Authorize(Roles = "Student")]
     public class StudentController : Controller

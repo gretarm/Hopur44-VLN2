@@ -1,9 +1,9 @@
 ﻿using Microsoft.Owin;
+using Mooshak2;
 using Owin;
-using WebApplication1.Models;
 
-[assembly: OwinStartupAttribute(typeof(WebApplication1.Startup))]
-namespace WebApplication1
+[assembly: OwinStartup(typeof(Startup))]
+namespace Mooshak2
 {
     public partial class Startup
     {

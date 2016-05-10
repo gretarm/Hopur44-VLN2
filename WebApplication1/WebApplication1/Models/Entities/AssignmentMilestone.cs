@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace WebApplication1.Models.Entities
+namespace Mooshak2.Models.Entities
 {
 	/// <summary>
 	/// AssignmentMilestone represents a part of an assigment

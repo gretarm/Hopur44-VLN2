@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 
-namespace WebApplication1.Models.Entities
+namespace Mooshak2.Models.Entities
 {
     public class Course
     {

@@ -3,11 +3,10 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
-using Microsoft.Owin.Security.Google;
+using Mooshak2.Models;
 using Owin;
-using WebApplication1.Models;
 
-namespace WebApplication1
+namespace Mooshak2
 {
     public partial class Startup
     {

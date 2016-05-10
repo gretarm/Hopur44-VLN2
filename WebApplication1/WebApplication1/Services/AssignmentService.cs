@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using WebApplication1.Models;
-using WebApplication1.Models.ViewModels;
+using Mooshak2.Models;
+using Mooshak2.Models.ViewModels;
 
-namespace WebApplication1.Services
+namespace Mooshak2.Services
 {
     public class AssignmentService
     {
