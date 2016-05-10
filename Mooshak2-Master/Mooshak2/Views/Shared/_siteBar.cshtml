@@ -1,0 +1,11 @@
+﻿@model IEnumerable<Mooshak2.Models.Entities.Assignment>
+
+
+<div>
+    <p>Upcomming assignments</p>
+
+    @if (User.IsInRole("Teacher") == true)
+    {
+        <p>No displayed to students</p>
+    }
+</div>

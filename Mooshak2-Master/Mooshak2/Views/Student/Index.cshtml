@@ -1,0 +1,27 @@
+﻿@model IEnumerable<Mooshak2.Models.Entities.Course>
+@using Microsoft.AspNet.Identity
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Welcome back, @User.Identity.GetUserName()</h2>
+
+<p>Select a course</p>
+<div class="row">
+
+    @foreach (var item in Model)
+    {
+
+        <div class="col-md-6">
+            <h2>@Html.DisplayFor(modelItem => item.Title)</h2>
+            <p>
+                @Html.DisplayFor(modelItem => item.Details)
+            </p>
+
+            @Html.ActionLink("Go to course \u00BB", "Courses", new { id = item.CourseID }, new { @class = "btn btn-default" })
+        </div>
+    }
+
+
+</div>
