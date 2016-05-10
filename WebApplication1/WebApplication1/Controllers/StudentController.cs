@@ -11,6 +11,7 @@ using WebApplication1.Models.Entities;
 using WebApplication1.Controllers;
 using WebApplication1.Services;
 using WebApplication1.Models;
+using Microsoft.AspNet.Identity;
 
 namespace WebApplication1.Controllers
 {
@@ -21,28 +22,35 @@ namespace WebApplication1.Controllers
         // GET: Student
         public ActionResult Index()
         {
-            IEnumerable<Course> cources = (from item in db.Courses
-                                           orderby item.Title ascending
-                                           select item).ToList();
-           
-            return View(cources);
+            /*
+            string userId = User.Identity.GetUserId();
+            IEnumerable<Enrollment> cources = (from item in db.Enrollments
+                                           where item.UserID = userId
+                                               select item).ToList();
+           */
+            IEnumerable<Course> courses = (from c in db.Courses
+                                           orderby c.Title ascending
+                                           select c).ToList();
+
+            return View(courses);
         }
         [Authorize]
-        public ActionResult Course(int? title)
+        public ActionResult Courses(int? id)
         {
-            if (title == null)
+            if (id == null)
             {
-                return Index();
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            Course course = db.Courses.Find(title);
+            Course cor = (from item in db.Courses
+                          where item.CourseID == id.Value
+                          select item).SingleOrDefault();
 
-            if (course == null)
+            if (cor == null)
             {
                 return HttpNotFound();
             }
-
-            return View(course);
+            return View(cor);
         }
     }
 }

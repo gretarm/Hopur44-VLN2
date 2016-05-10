@@ -424,3 +424,4 @@ C:\Lokastadur\Hopur44-VLN2\WebApplication1\WebApplication1\obj\Debug\WebApplicat
 C:\Lokastadur\Hopur44-VLN2\WebApplication1\WebApplication1\obj\Debug\WebApplication1.dll
 C:\Lokastadur\Hopur44-VLN2\WebApplication1\WebApplication1\obj\Debug\WebApplication1.pdb
 C:\Lokastadur\Hopur44-VLN2\WebApplication1\WebApplication1\obj\Debug\WebApplication1.Migrations.TeachmentAddedCourseandEnrollmentEdited.resources
+E:\HR\VLN2\Hopur44-VLN2\WebApplication1\WebApplication1\obj\Debug\WebApplication1.Migrations.TeachmentAddedCourseandEnrollmentEdited.resources
