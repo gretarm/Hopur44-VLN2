@@ -5,6 +5,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using WebApplication1.Models.Entities;
 using System.Data.Entity.ModelConfiguration.Conventions;
+using System.Collections.Generic;
 
 namespace WebApplication1.Models
 {
@@ -12,6 +13,13 @@ namespace WebApplication1.Models
     public class ApplicationUser : IdentityUser
     {
         public ApplicationUser() : base() { }
+
+        public virtual ICollection<Enrollment> Enrollments { get; set; }
+        public virtual ICollection<Teachment> Teachments { get; set; }
+
+
+
+
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
@@ -40,6 +48,7 @@ namespace WebApplication1.Models
         public DbSet<Assignment> Assignments { get; set; }
         public DbSet<AssignmentMilestone> Milestones { get; set; }
         public DbSet<Submission> Submissions { get; set; }
+        public DbSet<Teachment> Teachments { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)

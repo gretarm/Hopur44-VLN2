@@ -5,16 +5,13 @@ using System.Web;
 
 namespace WebApplication1.Models.Entities
 {
-    public class Enrollment
+    public class Teachment
     {
-        public int EnrollmentID { get; set; }
+        public int TeachmentID { get; set; }
         public int CourseID { get; set; }
 
 
         public virtual Course Course { get; set; }
         public virtual ApplicationUser UserID { get; set; }
-
-
-
     }
 }

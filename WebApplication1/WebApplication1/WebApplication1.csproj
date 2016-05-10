@@ -213,6 +213,10 @@
     <Compile Include="Migrations\201605101108190_Redding.Designer.cs">
       <DependentUpon>201605101108190_Redding.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605101128326_TeachmentAdded, CourseandEnrollmentEdited.cs" />
+    <Compile Include="Migrations\201605101128326_TeachmentAdded, CourseandEnrollmentEdited.Designer.cs">
+      <DependentUpon>201605101128326_TeachmentAdded, CourseandEnrollmentEdited.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Entities\Assignment.cs" />
@@ -220,6 +224,7 @@
     <Compile Include="Models\Entities\Course.cs" />
     <Compile Include="Models\Entities\Enrollment.cs" />
     <Compile Include="Models\Entities\Submission.cs" />
+    <Compile Include="Models\Entities\Teachment.cs" />
     <Compile Include="Services\UserService.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -306,6 +311,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605101108190_Redding.resx">
       <DependentUpon>201605101108190_Redding.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605101128326_TeachmentAdded, CourseandEnrollmentEdited.resx">
+      <DependentUpon>201605101128326_TeachmentAdded, CourseandEnrollmentEdited.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
