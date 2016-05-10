@@ -209,6 +209,10 @@
     <Compile Include="Migrations\201605091631340_Init.Designer.cs">
       <DependentUpon>201605091631340_Init.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605101108190_Redding.cs" />
+    <Compile Include="Migrations\201605101108190_Redding.Designer.cs">
+      <DependentUpon>201605101108190_Redding.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Entities\Assignment.cs" />
@@ -299,6 +303,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201605091631340_Init.resx">
       <DependentUpon>201605091631340_Init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605101108190_Redding.resx">
+      <DependentUpon>201605101108190_Redding.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
