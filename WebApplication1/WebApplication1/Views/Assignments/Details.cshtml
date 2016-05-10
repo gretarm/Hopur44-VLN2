@@ -1,6 +1,12 @@
-﻿@{
+﻿@model IEnumerable<WebApplication1.Models.Entities.Assignment>
+
+@{
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
 
+
+@foreach (var item in Model)
+{
+    <h2>@item.Title</h2>
+}

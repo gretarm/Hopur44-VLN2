@@ -24,10 +24,15 @@ namespace WebApplication1.Controllers
             return View(listAllAssignments);
         }
 
-        public ActionResult Details(int id)
+        public ActionResult Details(int? id)
         {
-            var viewModel = _service.GetAssignmentByID(id);
-            return View(viewModel);
+			if (id.HasValue)
+			{
+				int realId = id.Value;
+				var viewModel = _service.GetAssignmentByID(realId);
+				return View(viewModel);
+			}
+			return View("Error");
         }
     }
 }
