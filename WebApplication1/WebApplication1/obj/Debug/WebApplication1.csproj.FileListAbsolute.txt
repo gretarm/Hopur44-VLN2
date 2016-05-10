@@ -337,3 +337,4 @@ C:\Users\notandi\Hopur44-VLN2\WebApplication1\WebApplication1\obj\Debug\WebAppli
 C:\GIT\Hopur44-VLN2\WebApplication1\WebApplication1\obj\Debug\WebApplication1.Migrations.Init.resources
 E:\HR\VLN2\Hopur44-VLN2\WebApplication1\WebApplication1\obj\Debug\WebApplication1.csprojResolveAssemblyReference.cache
 E:\HR\VLN2\Hopur44-VLN2\WebApplication1\WebApplication1\obj\Debug\WebApplication1.Migrations.Init.resources
+C:\GIT\Hopur44-VLN2\WebApplication1\WebApplication1\obj\Debug\WebApplication1.csprojResolveAssemblyReference.cache
