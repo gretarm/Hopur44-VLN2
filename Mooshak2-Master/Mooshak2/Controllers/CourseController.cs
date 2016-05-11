@@ -25,6 +25,7 @@ namespace Mooshak2.Controllers
             }
             return View(cor);
         }
+
         public ActionResult Assignments(int? id)
         {
             if (id == null)
@@ -32,9 +33,9 @@ namespace Mooshak2.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            Assignment asi = (from assignment_item in DatabaseConnection.Db.Assignments
-                          where assignment_item.CourseID == id.Value
-                          select assignment_item).SingleOrDefault();
+            var asi = (from assignment in DatabaseConnection.Db.Assignments
+                                           orderby assignment.Title ascending
+                                           select assignment).ToList();
 
             if (asi == null)
             {
@@ -42,5 +43,64 @@ namespace Mooshak2.Controllers
             }
             return View(asi);
         }
+
+        public ActionResult Grade(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var grad = (from assignmentmile in DatabaseConnection.Db.Milestones
+                        join grade in DatabaseConnection.Db.Submissions
+                        on assignmentmile.ID equals grade.AssignmentMilestoneID
+                        join assignment in DatabaseConnection.Db.Assignments
+                        on assignmentmile.AssignmentID equals assignment.ID
+                        join assign_course in DatabaseConnection.Db.Courses
+                        on assignment.CourseID equals assign_course.CourseID
+                        select assignment.Title).ToList();
+
+            if (grad == null)
+            {
+                return HttpNotFound();
+            }
+            return View(grad);
+        }
+        public ActionResult Students(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var stud = (from enrollment in DatabaseConnection.Db.Enrollments
+                        join course in DatabaseConnection.Db.Courses 
+                        on enrollment.CourseID equals course.CourseID
+                        select enrollment).ToList();
+
+            if (stud == null)
+            {
+                return HttpNotFound();
+            }
+            return View(stud);
+        }
+        public ActionResult Teachers(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var asi = (from assignment in DatabaseConnection.Db.Assignments
+                       orderby assignment.Title ascending
+                       select assignment).ToList();
+
+            if (asi == null)
+            {
+                return HttpNotFound();
+            }
+            return View(asi);
+        }
+
     }
 }

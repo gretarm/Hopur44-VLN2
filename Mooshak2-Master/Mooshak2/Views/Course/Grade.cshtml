@@ -1,0 +1,18 @@
+﻿@model Mooshak2.Models.Entities.Course
+@{
+    ViewBag.Title = "Grade";
+}
+
+<h2>Gradee</h2>
+
+<ol class="breadcrumb">
+    <li><a href="~/Home">Home</a></li>
+    @Html.ActionLink("Assignment", "Assignment", new { id = Model.CourseID })
+    <li class="active">@Model.Title</li>
+</ol>
+
+
+@Html.ActionLink("Assignment", "Assignment", new { id = Model.CourseID }, new { @class = "btn btn-default" })
+@Html.ActionLink("My Grade", "Grade", new { id = Model.CourseID }, new { @class = "btn btn-default" })
+@Html.ActionLink("Students in course", "Students", new { id = Model.CourseID }, new { @class = "btn btn-default" })
+@Html.ActionLink("My Teacher", "Teacher", new { id = Model.CourseID }, new { @class = "btn btn-default" })

@@ -302,6 +302,7 @@
     <Content Include="Views\Teacher\Course.cshtml" />
     <Content Include="Views\Course\ID.cshtml" />
     <Content Include="Views\Course\Assignments.cshtml" />
+    <Content Include="Views\Course\Grade.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
