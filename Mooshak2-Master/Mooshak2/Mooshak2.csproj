@@ -208,17 +208,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201605091631340_Init.cs" />
-    <Compile Include="Migrations\201605091631340_Init.Designer.cs">
-      <DependentUpon>201605091631340_Init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201605101108190_Redding.cs" />
-    <Compile Include="Migrations\201605101108190_Redding.Designer.cs">
-      <DependentUpon>201605101108190_Redding.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201605101128326_TeachmentAdded, CourseandEnrollmentEdited.cs" />
-    <Compile Include="Migrations\201605101128326_TeachmentAdded, CourseandEnrollmentEdited.Designer.cs">
-      <DependentUpon>201605101128326_TeachmentAdded, CourseandEnrollmentEdited.cs</DependentUpon>
+    <Compile Include="Migrations\201605110507385_newInit.cs" />
+    <Compile Include="Migrations\201605110507385_newInit.Designer.cs">
+      <DependentUpon>201605110507385_newInit.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ViewModels\AccountViewModels.cs" />
@@ -313,17 +305,6 @@
     <Content Include="Views\Course\Assignments.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201605091631340_Init.resx">
-      <DependentUpon>201605091631340_Init.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201605101108190_Redding.resx">
-      <DependentUpon>201605101108190_Redding.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201605101128326_TeachmentAdded, CourseandEnrollmentEdited.resx">
-      <DependentUpon>201605101128326_TeachmentAdded, CourseandEnrollmentEdited.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
@@ -338,6 +319,11 @@
     <Folder Include="Content\Files\Assignments\Milestones\TeacherSolution\" />
     <Folder Include="Content\Files\Temp\" />
     <Folder Include="Views\Shared\Users\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201605110507385_newInit.resx">
+      <DependentUpon>201605110507385_newInit.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

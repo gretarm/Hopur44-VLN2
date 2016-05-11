@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace Mooshak2.Models.Entities
 {
@@ -10,11 +12,7 @@ namespace Mooshak2.Models.Entities
         public int EnrollmentID { get; set; }
         public int CourseID { get; set; }
 
-
         public virtual Course Course { get; set; }
         public virtual ApplicationUser UserID { get; set; }
-
-
-
     }
 }

@@ -28,13 +28,14 @@ namespace Mooshak2.Migrations
             //      new Person { FullName = "Brice Lambson" },
             //      new Person { FullName = "Rowan Miller" }
             //    );
-            //
+            /*
             context.Roles.AddOrUpdate(
                 new IdentityRole("Student"),
                 new IdentityRole("Admin"),
                 new IdentityRole("Teacher"),
                 new IdentityRole("TeacherAid")
                 );
+                */
         }
     }
 }

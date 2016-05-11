@@ -12,6 +12,7 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using Mooshak2.DAL;
 using Mooshak2.Models;
+using Mooshak2.Models.Entities;
 
 namespace Mooshak2
 {

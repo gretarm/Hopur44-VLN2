@@ -24,6 +24,9 @@ namespace Mooshak2.Models.Entities
 		/// </summary>
 		public string Title { get; set; }
 
+        public int MaxHandIns { get; set; }
+        public Submission BestSubmission { get; set; }
+
 		/// <summary>
 		/// Determines how much this milestone weighs in the assignment
 		/// For example: If this milestone weighs 15% then this property contains the value of 15
