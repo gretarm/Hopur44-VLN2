@@ -1,0 +1,25 @@
+﻿@model IEnumerable<Mooshak2.Models.Entities.Assignment>
+@{
+    ViewBag.Title = "Assignments";
+}
+
+<h2>@Model.Title</h2>
+
+<ol class="breadcrumb">
+    <li><a href="~/Home">Home</a></li>
+    <li class="active">@Model.Title</li>
+</ol>
+
+
+<div class="col-md-5">
+    @foreach (var item in Model)
+    {
+        <a href="">@Html.DisplayFor(modelItem => item.Title)</a>
+        <br />
+    }
+
+    @if (User.IsInRole("Teacher") == true)
+    {
+        <a href="">Add project</a>
+    }
+</div>

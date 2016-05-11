@@ -19,7 +19,7 @@
                 @Html.DisplayFor(modelItem => item.Details)
             </p>
 
-            @Html.ActionLink("Go to course \u00BB", "Courses", new { id = item.CourseID }, new { @class = "btn btn-default" })
+            @Html.ActionLink("Go to course \u00BB","../Course/ID", new { id = item.CourseID }, new { @class = "btn btn-default" })
         </div>
     }
 
