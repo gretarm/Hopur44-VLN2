@@ -34,8 +34,8 @@ namespace Mooshak2.Controllers
             }
 
             var asi = (from assignment in DatabaseConnection.Db.Assignments
-                                           orderby assignment.Title ascending
-                                           select assignment).ToList();
+                       orderby assignment.Title ascending
+                       select assignment).ToList();
 
             if (asi == null)
             {
@@ -73,16 +73,11 @@ namespace Mooshak2.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var stud = (from enrollment in DatabaseConnection.Db.Enrollments
-                        join course in DatabaseConnection.Db.Courses 
-                        on enrollment.CourseID equals course.CourseID
-                        select enrollment).ToList();
+            Enrollment cor = (from item in DatabaseConnection.Db.Enrollments
+                              where item.CourseID == id.Value
+                              select item).SingleOrDefault();
 
-            if (stud == null)
-            {
-                return HttpNotFound();
-            }
-            return View(stud);
+            return View(cor);
         }
         public ActionResult Teachers(int? id)
         {
