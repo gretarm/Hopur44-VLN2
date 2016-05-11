@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Mooshak2.Models.ViewModels;
+using WebApplication1.Models;
 
 namespace Mooshak2.DAL
 {

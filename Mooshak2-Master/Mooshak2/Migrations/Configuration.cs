@@ -1,21 +1,18 @@
-using Microsoft.AspNet.Identity.EntityFramework;
-using Mooshak2.DAL;
-using Mooshak2.Models;
-using System;
-using System.Data.Entity;
-using System.Data.Entity.Migrations;
-using System.Linq;
-
 namespace Mooshak2.Migrations
 {
-    internal sealed class Configuration : DbMigrationsConfiguration<ApplicationDbContext>
+    using System;
+    using System.Data.Entity;
+    using System.Data.Entity.Migrations;
+    using System.Linq;
+
+    internal sealed class Configuration : DbMigrationsConfiguration<WebApplication1.Models.ApplicationDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(ApplicationDbContext context)
+        protected override void Seed(WebApplication1.Models.ApplicationDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 
@@ -28,14 +25,7 @@ namespace Mooshak2.Migrations
             //      new Person { FullName = "Brice Lambson" },
             //      new Person { FullName = "Rowan Miller" }
             //    );
-            /*
-            context.Roles.AddOrUpdate(
-                new IdentityRole("Student"),
-                new IdentityRole("Admin"),
-                new IdentityRole("Teacher"),
-                new IdentityRole("TeacherAid")
-                );
-                */
+            //
         }
     }
 }

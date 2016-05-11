@@ -8,6 +8,7 @@ using Mooshak2.DAL;
 using Mooshak2.Models;
 using Mooshak2.Models.Entities;
 using Owin;
+using WebApplication1.Models;
 
 namespace Mooshak2
 {
@@ -17,7 +18,7 @@ namespace Mooshak2
         public void ConfigureAuth(IAppBuilder app)
         {
             // Configure the db context, user manager and signin manager to use a single instance per request
-            app.CreatePerOwinContext(ApplicationDbContext.Create);
+            app.CreatePerOwinContext(WebApplication1.Models.ApplicationDbContext.Create);
             app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
             app.CreatePerOwinContext<ApplicationSignInManager>(ApplicationSignInManager.Create);
 

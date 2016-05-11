@@ -203,14 +203,13 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Controllers\TeacherController.cs" />
-    <Compile Include="DAL\ApplicationDbContext.cs" />
     <Compile Include="DAL\CoursesService.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201605110507385_newInit.cs" />
-    <Compile Include="Migrations\201605110507385_newInit.Designer.cs">
-      <DependentUpon>201605110507385_newInit.cs</DependentUpon>
+    <Compile Include="Migrations\201605111225036_init.cs" />
+    <Compile Include="Migrations\201605111225036_init.Designer.cs">
+      <DependentUpon>201605111225036_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ViewModels\AccountViewModels.cs" />
@@ -221,7 +220,7 @@
     <Compile Include="Models\Entities\Submission.cs" />
     <Compile Include="Models\Entities\Teachment.cs" />
     <Compile Include="DAL\UserService.cs" />
-    <Compile Include="Models\Entities\IdentityModels.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ViewModels\ManageViewModels.cs" />
     <Compile Include="Models\ViewModels\AssignmentMilestoneViewModel.cs" />
     <Compile Include="Models\ViewModels\AssignmentViewModel.cs" />
@@ -321,8 +320,8 @@
     <Folder Include="Views\Shared\Users\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201605110507385_newInit.resx">
-      <DependentUpon>201605110507385_newInit.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201605111225036_init.resx">
+      <DependentUpon>201605111225036_init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
