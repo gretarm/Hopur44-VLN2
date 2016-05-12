@@ -6,7 +6,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Mooshak2.Models.Entities;
 using System.Data.Entity;
 
-namespace WebApplication1.Models
+namespace Mooshak2.Models
 {
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
@@ -15,6 +15,7 @@ namespace WebApplication1.Models
 
         public virtual ICollection<Enrollment> Enrollments { get; set; }
         public virtual ICollection<Teachment> Teachments { get; set; }
+        public virtual ICollection<Submission> Submissions { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
@@ -44,6 +45,8 @@ namespace WebApplication1.Models
         public DbSet<AssignmentMilestone> Milestones { get; set; }
         public DbSet<Submission> Submissions { get; set; }
         public DbSet<Teachment> Teachments { get; set; }
+        public DbSet<File> Files { get; set; }
+        public DbSet<SubmissionFile> SubmissionFiles { get; set; }
 
 
         public ApplicationDbContext()

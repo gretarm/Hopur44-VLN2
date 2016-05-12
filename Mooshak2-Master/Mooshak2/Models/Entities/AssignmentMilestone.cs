@@ -30,6 +30,11 @@ namespace Mooshak2.Models.Entities
 		/// </summary>
 		public int Weight { get; set; }
 
+        /// <summary>
+        /// The best submission this particular Milestone had from the user
+        /// </summary>
+        public string BestSubmission { get; set; }
+
         public virtual ICollection<Submission> Submissions { get; set; }
     }
 }
