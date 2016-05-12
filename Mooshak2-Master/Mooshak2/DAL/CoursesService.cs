@@ -18,8 +18,8 @@ namespace Mooshak2.DAL
 
         public List<Course> GetCoursesForTeacher(ApplicationUser user)
         {
-            var cor = (from e in DatabaseConnection.Db.Courses
-                       join em in DatabaseConnection.Db.Teachments on e.CourseID equals em.CourseID
+            var cor = (from e in _db.Courses
+                       join em in _db.Teachments on e.CourseID equals em.CourseID
                        where em.UserID.Id == user.Id
                        select e).ToList();
             return cor;
@@ -27,8 +27,8 @@ namespace Mooshak2.DAL
 
         public List<Course> GetCoursesForStudent(ApplicationUser user)
         {
-            var cor = (from e in DatabaseConnection.Db.Courses
-                       join em in DatabaseConnection.Db.Enrollments on e.CourseID equals em.CourseID
+            var cor = (from e in _db.Courses
+                       join em in _db.Enrollments on e.CourseID equals em.CourseID
                        where em.UserID.Id == user.Id
                        select e).ToList();
             return cor;
