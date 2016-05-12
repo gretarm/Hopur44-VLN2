@@ -1,13 +1,17 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Mooshak2.Models;
 using Mooshak2.Models.Entities;
+using Mooshak2.Models.ViewModels;
 
 namespace Mooshak2.DAL
 {
     public class UserService
     {
+        private ApplicationDbContext _dbContext = new ApplicationDbContext();
         public bool RoleExists(string name)
         {
             var rm = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new ApplicationDbContext()));
@@ -73,6 +77,14 @@ namespace Mooshak2.DAL
             var um = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
             var result = um.GetRoles(userId);
             return result;
+        }
+
+        public IEnumerable<UserRoleModelView> GetAllUserAndRole()
+        {
+            var allUsers = _dbContext.Users.ToList();
+            IEnumerable<UserRoleModelView> userRoles = allUsers.Select(
+                    user => new UserRoleModelView {Email = user.Email, Role = GetUserRoles(user.Id)[0]});
+            return userRoles;
         }
     }
 }

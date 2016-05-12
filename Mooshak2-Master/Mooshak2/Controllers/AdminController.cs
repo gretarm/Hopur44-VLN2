@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Mooshak2.DAL;
@@ -17,6 +18,7 @@ namespace Mooshak2.Controllers
     [Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
+        private UserService _userService = new UserService();
         // GET: Admin
         public ActionResult Index()
         {
@@ -25,8 +27,8 @@ namespace Mooshak2.Controllers
 
         public ActionResult Users()
         {
-
-            return View();
+            
+           return View( _userService.GetAllUserAndRole() );
         }
 
         public ActionResult Courses()
