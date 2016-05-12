@@ -211,7 +211,13 @@
     <Compile Include="Migrations\201605111225036_init.Designer.cs">
       <DependentUpon>201605111225036_init.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605121057234_Added File,SubmissionFile.cs" />
+    <Compile Include="Migrations\201605121057234_Added File,SubmissionFile.Designer.cs">
+      <DependentUpon>201605121057234_Added File,SubmissionFile.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Entities\File.cs" />
+    <Compile Include="Models\Entities\SubmissionFile.cs" />
     <Compile Include="Models\ViewModels\AccountViewModels.cs" />
     <Compile Include="Models\Entities\Assignment.cs" />
     <Compile Include="Models\Entities\AssignmentMilestone.cs" />
@@ -331,6 +337,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201605111225036_init.resx">
       <DependentUpon>201605111225036_init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605121057234_Added File,SubmissionFile.resx">
+      <DependentUpon>201605121057234_Added File,SubmissionFile.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
