@@ -38,5 +38,27 @@ namespace Mooshak2.Controllers
                                            select c).ToList();
             return View(courses);
         }
+
+        public ActionResult Create()
+        {
+
+            return View();
+        }
+
+        public ActionResult Edit(string id)
+        {
+            
+            return View(_userService.GetRoleModelViewByID(id));
+        }
+
+        public ActionResult Details(string id)
+        {
+            return View();
+        }
+
+        public ActionResult Delete(string id)
+        {
+            return View();
+        }
     }
 }

@@ -58,5 +58,6 @@ namespace Mooshak2.Models
         {
             return new ApplicationDbContext();
         }
+
     }
 }
