@@ -41,9 +41,15 @@ namespace Mooshak2.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var asi = (from assignment in DatabaseConnection.Db.Assignments
-                       orderby assignment.Title ascending
-                       select assignment).ToList();
+            var asi = (from a in DatabaseConnection.Db.Assignments
+                       where a.CourseID == id.Value
+                       select new
+                       {
+                           a.ID,
+                           a.CourseID,
+                           a.Title,
+                           a.Description
+                       }).ToList();
 
             if (asi == null)
             {
@@ -81,9 +87,14 @@ namespace Mooshak2.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            Enrollment cor = (from item in DatabaseConnection.Db.Enrollments
-                              where item.CourseID == id.Value
-                              select item).SingleOrDefault();
+            var cor = (from e in DatabaseConnection.Db.Enrollments
+                              where e.CourseID == id.Value
+                              select new
+                              {
+                                  e.EnrollmentID,
+                                  e.CourseID,
+                                  e.UserID
+                              }).SingleOrDefault();
 
             return View(cor);
         }
@@ -93,10 +104,19 @@ namespace Mooshak2.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+            var asi = (from teachment in DatabaseConnection.Db.Teachments
+                       join course in DatabaseConnection.Db.Courses
+                       on teachment.CourseID equals course.CourseID
+                       join users in DatabaseConnection.Db.Users
+                       on teachment.UserID.Id equals users.Id
 
-            var asi = (from assignment in DatabaseConnection.Db.Assignments
-                       orderby assignment.Title ascending
-                       select assignment).ToList();
+                       where teachment.CourseID == id.Value
+                       select new
+                       {
+                           teachment.TeachmentID,
+                           course.Title,
+                           users.UserName
+                       }).ToList();
 
             if (asi == null)
             {
@@ -104,23 +124,26 @@ namespace Mooshak2.Controllers
             }
             return View(asi);
         }
-        [Authorize(Roles = "Admin")]
+
+        [Authorize(Roles = "AdminX")]
         public ActionResult Delete(int? id)
         {
             return View();
         }
 
 
-
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             return View();
         }
+
         [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             return View();
         }
+
         public ActionResult Detail(int? id)
         {
             return View();

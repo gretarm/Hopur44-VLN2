@@ -23,10 +23,6 @@ namespace Mooshak2.Controllers
         // GET: Student
         public ActionResult Index()
         {
-            //var userId = User.Identity.GetUserId();
-            //var user = course_service.GetCoursesForUserId(userId);
-
-
             IEnumerable<Course> courses = (from c in DatabaseConnection.Db.Courses
                                            orderby c.Title ascending
                                            select c).ToList();
