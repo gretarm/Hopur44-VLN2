@@ -42,15 +42,11 @@ namespace Mooshak2.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var asi = (from a in DatabaseConnection.Db.Assignments
-                       where a.CourseID == id.Value
-                       select new
-                       {
-                           a.ID,
-                           a.CourseID,
-                           a.Title,
-                           a.Description
-                       }).ToList();
+            var asi = (from assignment in DatabaseConnection.Db.Assignments
+                       join course in DatabaseConnection.Db.Courses
+                       on assignment.CourseID equals course.CourseID
+                       where course.CourseID == id.Value
+                       select new AssignmentViewModel { Title = assignment }).ToList();
 
             if (asi == null)
             {
@@ -61,6 +57,7 @@ namespace Mooshak2.Controllers
 
         public ActionResult Grade(int? id)
         {
+            /*
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -80,6 +77,8 @@ namespace Mooshak2.Controllers
                 return HttpNotFound();
             }
             return View(grad);
+            */
+            return View();
         }
         public ActionResult Students(int? id)
         {
