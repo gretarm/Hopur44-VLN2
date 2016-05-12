@@ -12,20 +12,17 @@ namespace Mooshak2.Controllers
 {
     public class AssignmentsController : Controller
     {
-        private AssignmentService _service = new AssignmentService();
+        private readonly AssignmentService _assignmentService = new AssignmentService();
 		public ActionResult Index()
-        {
-			IEnumerable<Assignment> listAllAssignments = (from a in DatabaseConnection.Db.Assignments
-														  orderby a.Title ascending
-														  select a).ToList();
-
-            return View(listAllAssignments);
+		{
+		    var model = _assignmentService.GetAllAssignments();
+            return View(model);
         }
 
         public ActionResult Details(int id)
         {
-            var viewModel = _service.GetAssignmentByID(id);
-            return View(viewModel);
+            var model = _assignmentService.GetAssignmentByID(id);
+            return View(model);
         }
     }
 }

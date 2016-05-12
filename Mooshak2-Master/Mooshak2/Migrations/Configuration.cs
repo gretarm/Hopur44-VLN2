@@ -1,21 +1,23 @@
+using Mooshak2.DAL;
 using Mooshak2.Models;
+using System;
+using System.Data.Entity;
+using System.Data.Entity.Migrations;
+using System.Linq;
 
 namespace Mooshak2.Migrations
 {
-    using System;
-    using System.Data.Entity;
-    using System.Data.Entity.Migrations;
-    using System.Linq;
 
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Mooshak2.Models.ApplicationDbContext>
+
+    internal sealed class Configuration : DbMigrationsConfiguration<Mooshak2.DAL.ApplicationDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(Mooshak2.Models.ApplicationDbContext context)
+        protected override void Seed(ApplicationDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 

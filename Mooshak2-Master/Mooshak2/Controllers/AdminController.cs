@@ -19,6 +19,7 @@ namespace Mooshak2.Controllers
     public class AdminController : Controller
     {
         private UserService _userService = new UserService();
+        private CoursesService _coursesService = new CoursesService();
         // GET: Admin
         public ActionResult Index()
         {
@@ -33,10 +34,8 @@ namespace Mooshak2.Controllers
 
         public ActionResult Courses()
         {
-            IEnumerable<Course> courses = (from c in DatabaseConnection.Db.Courses
-                                           orderby c.Title ascending
-                                           select c).ToList();
-            return View(courses);
+            
+            return View(_coursesService.GetAllCourses());
         }
 
         public ActionResult Create()

@@ -2,24 +2,41 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using Mooshak2.Controllers;
 using Mooshak2.Models;
 using Mooshak2.Models.Entities;
+using Mooshak2.Models.ViewModels;
 
 namespace Mooshak2.DAL
 {
     public class CoursesService
     {
-        private ApplicationDbContext _db;
-        public CoursesService(ApplicationDbContext context)
+        private readonly ApplicationDbContext _dbContext = new ApplicationDbContext();
+        
+        public IEnumerable<Course> GetAllCourses()
         {
-            _db = context;
+            IEnumerable<Course> courses = (from c in _dbContext.Courses
+                                           orderby c.Title ascending
+                                           select c).ToList();
+            return courses;
+        }
+
+        public Course GetCourseByName(string title)
+        {
+            return _dbContext.Courses.Find(title);
+        }
+
+        public Course GetCourseById(int id)
+        {
+            var cor = (from item in _dbContext.Courses
+                          where item.CourseID == id
+                          select item).SingleOrDefault();
+            return cor;
         }
 
         public List<Course> GetCoursesForTeacher(ApplicationUser user)
         {
-            var cor = (from e in _db.Courses
-                       join em in _db.Teachments on e.CourseID equals em.CourseID
+            var cor = (from e in _dbContext.Courses
+                       join em in _dbContext.Teachments on e.CourseID equals em.CourseID
                        where em.UserID.Id == user.Id
                        select e).ToList();
             return cor;
@@ -27,11 +44,40 @@ namespace Mooshak2.DAL
 
         public List<Course> GetCoursesForStudent(ApplicationUser user)
         {
-            var cor = (from e in _db.Courses
-                       join em in _db.Enrollments on e.CourseID equals em.CourseID
+            var cor = (from e in _dbContext.Courses
+                       join em in _dbContext.Enrollments on e.CourseID equals em.CourseID
                        where em.UserID.Id == user.Id
                        select e).ToList();
             return cor;
+        }
+
+        public List<StudentViewModel> GetStudentsInCourse(int courseId)
+        {
+            var cor = (from enrollments in _dbContext.Enrollments
+
+                       join course in _dbContext.Courses
+                       on enrollments.CourseID equals course.CourseID
+
+                       join users in _dbContext.Users
+                       on enrollments.UserID.Id equals users.Id
+
+                       where enrollments.CourseID == 3
+
+                       select new StudentViewModel { ID = enrollments, Title = course, Name = users }).ToList();
+            return cor;
+        }
+
+        public List<TeacherViewModel> GetTeachersInCourse(int courseId)
+        {
+            var asi = (from teachment in _dbContext.Teachments
+                       join course in _dbContext.Courses
+                       on teachment.CourseID equals course.CourseID
+                       join users in _dbContext.Users
+                       on teachment.UserID.Id equals users.Id
+
+                       where teachment.CourseID == courseId
+                       select new TeacherViewModel { ID = teachment, Title = course, Name = users }).ToList();
+            return asi;
         }
     }
 }

@@ -15,25 +15,17 @@ namespace Mooshak2.Controllers
     [Authorize(Roles = "Teacher")]
     public class TeacherController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
-        UserServicePro userService;
-        CoursesService coursesService;
-
-        public TeacherController() : base()
-        {
-            userService = new UserServicePro(db);
-            coursesService = new CoursesService(db);
-        }
-
+        private readonly UserService _userService = new UserService();
+        private readonly CoursesService _coursesService = new CoursesService();
 
         // GET: Teacher
         public ActionResult Index()
         {
             TeacherViewModel model = new TeacherViewModel();
             var userId = User.Identity.GetUserId();
-            var user = userService.FindUserByID(userId);
+            var user = _userService.GetUserById(userId);
 
-            model.Courses = coursesService.GetCoursesForTeacher(user);
+            model.Courses = _coursesService.GetCoursesForTeacher(user);
             return View(model);
         }
 
@@ -45,7 +37,7 @@ namespace Mooshak2.Controllers
 				return Index();
 			}
 
-			Course course = DatabaseConnection.Db.Courses.Find(title);
+		    Course course = _coursesService.GetCourseByName(title.ToString());
 
 			if (course == null)
 			{

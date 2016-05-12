@@ -12,27 +12,7 @@ using Mooshak2.Models;
 
 namespace Mooshak2.Controllers
 {
-    /// <summary>
-    /// One instance of applacation to be used with all the controllers
-    /// má færa hann í 
-    /// </summary>
-    public class DatabaseConnection
-    {
-        private static ApplicationDbContext db = new ApplicationDbContext();
 
-        public static ApplicationDbContext Db
-        {
-            get
-            {
-                return db;
-            }
-
-            set
-            {
-                db = value;
-            }
-        }
-    }
 
     [Authorize]
     public class HomeController : Controller

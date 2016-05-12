@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Mooshak2.Models;
+using Mooshak2.Models.Entities;
 using Mooshak2.Models.ViewModels;
 
 namespace Mooshak2.DAL
@@ -8,25 +9,33 @@ namespace Mooshak2.DAL
     public class AssignmentService
     {
 
-      private ApplicationDbContext _db;
-      public AssignmentService()
-        {
-            _db = new ApplicationDbContext();
-        }
+        private readonly ApplicationDbContext _dbContext = new ApplicationDbContext();
 
-      public List<AssignmentViewModel> GetAssignmentsInCourse(int courseID)
+        public IEnumerable<Assignment> GetAllAssignments()
         {
-            return null;
+            IEnumerable<Assignment> listAll = (from a in _dbContext.Assignments
+                                                            orderby a.Title ascending
+                                                            select a).ToList();
+            return listAll;
         }
-      public AssignmentViewModel GetAssignmentByID(int assignmentID)
+        public List<AssignmentViewModel> GetAssignmentsInCourse(int courseId)
         {
-            var assignment = _db.Assignments.SingleOrDefault(x => x.ID == assignmentID);
+            var asi = (from assignment in _dbContext.Assignments
+                       join course in _dbContext.Courses
+                       on assignment.CourseID equals course.CourseID
+                       where course.CourseID == courseId
+                       select new AssignmentViewModel { Title = assignment }).ToList();
+            return asi;
+        }
+        public AssignmentViewModel GetAssignmentByID(int assignmentID)
+        {
+            var assignment = _dbContext.Assignments.SingleOrDefault(x => x.ID == assignmentID);
             if (assignment == null)
             {
                 //todo: KASTA VILLU!
             }
 
-            var milestones = _db.Milestones
+            var milestones = _dbContext.Milestones
                 .Where(x => x.AssignmentID == assignmentID)
                 .Select(x => new AssignmentMilestoneViewModel
                 {

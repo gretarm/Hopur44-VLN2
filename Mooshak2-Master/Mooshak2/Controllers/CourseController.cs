@@ -3,6 +3,8 @@ using System.Data;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
+using Mooshak2.DAL;
+using Mooshak2.Models;
 using Mooshak2.Models.Entities;
 using Mooshak2.Models.ViewModels;
 
@@ -10,12 +12,12 @@ namespace Mooshak2.Controllers
 {
     public class CourseController : Controller
     {
+        private readonly CoursesService _coursesService = new CoursesService();
+        private readonly AssignmentService _assignmentService = new AssignmentService();
         public ActionResult Index()
         {
-            IEnumerable<Course> courses = (from c in DatabaseConnection.Db.Courses
-                                           orderby c.Title ascending
-                                           select c).ToList();
-            return View(courses);
+            var model = _coursesService.GetAllCourses();
+            return View(model);
         }
         public ActionResult ID(int? id)
         {
@@ -24,9 +26,7 @@ namespace Mooshak2.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            Course cor = (from item in DatabaseConnection.Db.Courses
-                          where item.CourseID == id.Value
-                          select item).SingleOrDefault();
+            Course cor = _coursesService.GetCourseById(id.Value);
 
             if (cor == null)
             {
@@ -41,12 +41,7 @@ namespace Mooshak2.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-
-            var asi = (from assignment in DatabaseConnection.Db.Assignments
-                       join course in DatabaseConnection.Db.Courses
-                       on assignment.CourseID equals course.CourseID
-                       where course.CourseID == id.Value
-                       select new AssignmentViewModel { Title = assignment }).ToList();
+            var asi = _assignmentService.GetAssignmentsInCourse(id.Value);
 
             if (asi == null)
             {
@@ -86,20 +81,9 @@ namespace Mooshak2.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+            var courses = _coursesService.GetStudentsInCourse(id.Value);
 
-            var cor = (from enrollments in DatabaseConnection.Db.Enrollments
-
-                       join course in DatabaseConnection.Db.Courses
-                       on enrollments.CourseID equals course.CourseID
-
-                       join users in DatabaseConnection.Db.Users
-                       on enrollments.UserID.Id equals users.Id
-
-                       where enrollments.CourseID == 3
-
-                       select new StudentViewModel { ID = enrollments, Title = course, Name = users }).ToList();
-
-            return View(cor);
+            return View(courses);
         }
         public ActionResult Teachers(int? id)
         {
@@ -107,15 +91,8 @@ namespace Mooshak2.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var asi = (from teachment in DatabaseConnection.Db.Teachments
-                       join course in DatabaseConnection.Db.Courses
-                       on teachment.CourseID equals course.CourseID
-                       join users in DatabaseConnection.Db.Users
-                       on teachment.UserID.Id equals users.Id
 
-                       where teachment.CourseID == id.Value
-                       select new TeacherViewModel { ID = teachment, Title = course, Name = users }).ToList();
-
+            var asi = _coursesService.GetTeachersInCourse(id.Value);
 
             if (asi == null)
             {

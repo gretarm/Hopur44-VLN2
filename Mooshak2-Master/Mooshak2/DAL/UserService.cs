@@ -18,7 +18,23 @@ namespace Mooshak2.DAL
 {
     public class UserService
     {
-        private ApplicationDbContext _dbContext = new ApplicationDbContext();
+        private readonly ApplicationDbContext _dbContext = new ApplicationDbContext();
+
+        public List<ApplicationUser> GetAllUsers()
+        {
+            try
+            {
+                var users = _dbContext.Users.ToList();
+                return users;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+
+            return null;
+        }
+
         public bool RoleExists(string name)
         {
             var rm = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new ApplicationDbContext()));
@@ -38,7 +54,7 @@ namespace Mooshak2.DAL
             return um.FindByName(name) != null;
         }
 
-        public ApplicationUser GetUserByID(string name)
+        public ApplicationUser GetUserByName(string name)
         {
             var um = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
             return um.FindByName(name);
@@ -99,12 +115,18 @@ namespace Mooshak2.DAL
 
             UserRoleModelView user = new UserRoleModelView
             {
-                Email = GetUserByID(userId).Email,
+                Email = GetUserById(userId).Email,
                 Role = GetUserRoles(userId)[0],
-                User = GetUserByID(userId)
+                User = GetUserById(userId)
             };
             return user;
         }
+        public ApplicationUser GetUserById(string userid)
+        {
+            var um = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+            var user = (from u in _dbContext.Users where u.Id == userid select u).SingleOrDefault();
 
+            return user;
+        }
     }
 }

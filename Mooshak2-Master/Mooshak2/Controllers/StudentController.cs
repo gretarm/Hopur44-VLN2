@@ -19,24 +19,17 @@ namespace Mooshak2.Controllers
     [Authorize(Roles = "Student")]
     public class StudentController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
-        UserServicePro userService;
-        CoursesService coursesService;
-
-        public StudentController() : base()
-        {
-            userService = new UserServicePro(db);
-            coursesService = new CoursesService(db);
-        }
+        private UserService _userService = new UserService();
+        private CoursesService _coursesService = new CoursesService();
 
         // GET: Student
         public ActionResult Index()
         {
             StudentViewModel model = new StudentViewModel();
             var userId = User.Identity.GetUserId();
-            var user = userService.FindUserByID(userId);
+            var user = _userService.GetUserById(userId);
 
-            model.Courses = coursesService.GetCoursesForStudent(user);
+            model.Courses = _coursesService.GetCoursesForStudent(user);
             return View(model);
         }
     }
