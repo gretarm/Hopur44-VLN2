@@ -114,7 +114,7 @@ namespace Mooshak2.Controllers
                        on teachment.UserID.Id equals users.Id
 
                        where teachment.CourseID == id.Value
-                       select new TeachersViewModel { ID = teachment, Title = course, Name = users }).ToList();
+                       select new TeacherViewModel { ID = teachment, Title = course, Name = users }).ToList();
 
 
             if (asi == null)

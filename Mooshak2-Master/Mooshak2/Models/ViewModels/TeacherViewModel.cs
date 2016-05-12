@@ -7,7 +7,7 @@ using Mooshak2.Models.Entities;
 
 namespace Mooshak2.Models.ViewModels
 {
-    public class TeachersViewModel
+    public class TeacherViewModel
     {
         public Teachment ID { get; set; }
         public Course Title { get; set; }

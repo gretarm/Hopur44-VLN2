@@ -99,9 +99,9 @@ namespace Mooshak2.DAL
 
             UserRoleModelView user = new UserRoleModelView
             {
-                Email = GetUserById(userId).Email,
+                Email = GetUserByID(userId).Email,
                 Role = GetUserRoles(userId)[0],
-                User = GetUserById(userId)
+                User = GetUserByID(userId)
             };
             return user;
         }
