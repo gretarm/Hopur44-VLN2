@@ -25,10 +25,8 @@ namespace Mooshak2.Controllers
 
         public ActionResult Users()
         {
-            IEnumerable<ApplicationUser> users = (from u in DatabaseConnection.Db.ApplicationUsers
-                                           orderby u.Email ascending
-                                           select u).ToList();
-            return View(users);
+
+            return View();
         }
 
         public ActionResult Courses()

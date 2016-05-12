@@ -8,14 +8,14 @@ namespace Mooshak2.Migrations
     using System.Linq;
 
 
-    internal sealed class Configuration : DbMigrationsConfiguration<ApplicationDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<Mooshak2.Models.ApplicationDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(ApplicationDbContext context)
+        protected override void Seed(Mooshak2.Models.ApplicationDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 

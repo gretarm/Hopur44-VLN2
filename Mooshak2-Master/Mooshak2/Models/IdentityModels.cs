@@ -58,7 +58,5 @@ namespace Mooshak2.Models
         {
             return new ApplicationDbContext();
         }
-
-        public System.Data.Entity.DbSet<Mooshak2.Models.ApplicationUser> ApplicationUsers { get; set; }
     }
 }
