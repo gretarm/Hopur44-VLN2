@@ -8,7 +8,7 @@ using System.Web.Security;
 using Microsoft.AspNet.Identity;
 using Mooshak2.Controllers;
 using Mooshak2.DAL;
-using WebApplication1.Models;
+using Mooshak2.Models;
 
 namespace Mooshak2.Controllers
 {

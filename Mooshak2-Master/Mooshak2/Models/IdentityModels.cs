@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
+using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Mooshak2.Models.Entities;
-using System.Data.Entity;
 
-namespace WebApplication1.Models
+namespace Mooshak2.Models
 {
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
@@ -55,5 +55,7 @@ namespace WebApplication1.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<Mooshak2.Models.ApplicationUser> ApplicationUsers { get; set; }
     }
 }

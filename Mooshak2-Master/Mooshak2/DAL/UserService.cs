@@ -3,7 +3,6 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Mooshak2.Models;
 using Mooshak2.Models.Entities;
-using WebApplication1.Models;
 
 namespace Mooshak2.DAL
 {

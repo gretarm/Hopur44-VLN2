@@ -13,7 +13,6 @@ using Microsoft.Owin.Security;
 using Mooshak2.DAL;
 using Mooshak2.Models;
 using Mooshak2.Models.Entities;
-using WebApplication1.Models;
 
 namespace Mooshak2
 {
@@ -45,7 +44,7 @@ namespace Mooshak2
 
         public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context) 
         {
-            var manager = new ApplicationUserManager(new UserStore<ApplicationUser>(context.Get<WebApplication1.Models.ApplicationDbContext>()));
+            var manager = new ApplicationUserManager(new UserStore<ApplicationUser>(context.Get<ApplicationDbContext>()));
             // Configure validation logic for usernames
             manager.UserValidator = new UserValidator<ApplicationUser>(manager)
             {

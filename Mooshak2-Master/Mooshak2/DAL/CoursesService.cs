@@ -5,7 +5,6 @@ using System.Web;
 using Mooshak2.Controllers;
 using Mooshak2.Models;
 using Mooshak2.Models.Entities;
-using WebApplication1.Models;
 
 namespace Mooshak2.DAL
 {

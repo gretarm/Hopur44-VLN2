@@ -1,10 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Mooshak2.DAL;
+using Mooshak2.Models;
 using Mooshak2.Models.Entities;
+using Mooshak2.Models.ViewModels;
+using Mooshak2;
 
 namespace Mooshak2.Controllers
 {
@@ -19,7 +25,10 @@ namespace Mooshak2.Controllers
 
         public ActionResult Users()
         {
-            return View();
+            IEnumerable<ApplicationUser> users = (from u in DatabaseConnection.Db.ApplicationUsers
+                                           orderby u.Email ascending
+                                           select u).ToList();
+            return View(users);
         }
 
         public ActionResult Courses()

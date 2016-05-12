@@ -4,7 +4,6 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 using Microsoft.AspNet.Identity.EntityFramework;
-using WebApplication1.Models;
 
 namespace Mooshak2.Models.Entities
 {
