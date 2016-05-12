@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Mooshak2.DAL;
+using Mooshak2.Models.Entities;
 
 namespace Mooshak2.Controllers
 {
@@ -23,9 +24,10 @@ namespace Mooshak2.Controllers
 
         public ActionResult Courses()
         {
-            CoursesService _service = new CoursesService();
-            return View();
+            IEnumerable<Course> courses = (from c in DatabaseConnection.Db.Courses
+                                           orderby c.Title ascending
+                                           select c).ToList();
+            return View(courses);
         }
-
     }
 }

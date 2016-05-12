@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
@@ -8,6 +9,13 @@ namespace Mooshak2.Controllers
 {
     public class CourseController : Controller
     {
+        public ActionResult Index()
+        {
+            IEnumerable<Course> courses = (from c in DatabaseConnection.Db.Courses
+                                           orderby c.Title ascending
+                                           select c).ToList();
+            return View(courses);
+        }
         public ActionResult ID(int? id)
         {
             if (id == null)
@@ -96,6 +104,28 @@ namespace Mooshak2.Controllers
             }
             return View(asi);
         }
+        [Authorize(Roles = "Admin")]
+        public ActionResult Delete(int? id)
+        {
+            return View();
+        }
+
+
+
+        public ActionResult Edit(int? id)
+        {
+            return View();
+        }
+        [Authorize(Roles = "Admin")]
+        public ActionResult Create()
+        {
+            return View();
+        }
+        public ActionResult Detail(int? id)
+        {
+            return View();
+        }
+
 
     }
 }
