@@ -12,6 +12,7 @@ using Microsoft.AspNet.Identity;
 using Mooshak2.DAL;
 using Mooshak2.Models;
 using Mooshak2.Models.Entities;
+using Mooshak2.Models.ViewModels;
 
 namespace Mooshak2.Controllers
 {
@@ -31,10 +32,12 @@ namespace Mooshak2.Controllers
         // GET: Student
         public ActionResult Index()
         {
-            IEnumerable<Course> courses = (from c in DatabaseConnection.Db.Courses
-                                           orderby c.Title ascending
-                                           select c).ToList();
-            return View(courses);
+            StudentViewModel model = new StudentViewModel();
+            var userId = User.Identity.GetUserId();
+            var user = userService.FindUserByID(userId);
+
+            model.Courses = coursesService.GetCoursesForStudent(user);
+            return View(model);
         }
     }
 }

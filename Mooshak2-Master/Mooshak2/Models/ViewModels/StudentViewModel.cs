@@ -11,5 +11,6 @@ namespace Mooshak2.Models.ViewModels
         public Enrollment ID { get; set; }
         public Course Title { get; set; }
         public ApplicationUser Name { get; set; }
+        public List<Course> Courses { get; set; }
     }
 }
