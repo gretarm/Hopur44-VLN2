@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Mooshak2.Models.Entities.Course>
+﻿@model Mooshak2.Models.ViewModels.TeacherViewModel
 
 @{
     ViewBag.Title = "Index";
@@ -6,7 +6,7 @@
 
 <div class="mainContent body-content col-md-¨4">
     <h2>Teacher</h2>
-    @foreach (var item in Model)
+    @foreach (var item in Model.Courses)
     {
         @Html.ActionLink(item.Title + "\u00BB", "../Course/ID", new { id = item.CourseID }, new { @class = "btn btn-default menuButton" })
     }

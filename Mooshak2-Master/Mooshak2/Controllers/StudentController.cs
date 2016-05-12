@@ -18,7 +18,15 @@ namespace Mooshak2.Controllers
     [Authorize(Roles = "Student")]
     public class StudentController : Controller
     {
-        CoursesService course_service = new CoursesService();
+        private ApplicationDbContext db = new ApplicationDbContext();
+        UserServicePro userService;
+        CoursesService coursesService;
+
+        public StudentController() : base()
+        {
+            userService = new UserServicePro(db);
+            coursesService = new CoursesService(db);
+        }
 
         // GET: Student
         public ActionResult Index()

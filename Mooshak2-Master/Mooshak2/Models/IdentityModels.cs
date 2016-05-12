@@ -28,6 +28,11 @@ namespace Mooshak2.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public ApplicationDbContext()
+            : base("DefaultConnection", throwIfV1Schema: false)
+        {
+        }
+
         public override IDbSet<ApplicationUser> Users
         {
             get
@@ -47,12 +52,6 @@ namespace Mooshak2.Models
         public DbSet<Teachment> Teachments { get; set; }
         public DbSet<File> Files { get; set; }
         public DbSet<SubmissionFile> SubmissionFiles { get; set; }
-
-
-        public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
-        {
-        }
 
         public static ApplicationDbContext Create()
         {

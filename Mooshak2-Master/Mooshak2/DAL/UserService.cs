@@ -11,6 +11,8 @@ using System.Web.WebPages.Html;
 using System.Web.Security;
 using System.Web.UI;
 using Mooshak2.DAL;
+using System;
+
 
 namespace Mooshak2.DAL
 {
@@ -36,7 +38,7 @@ namespace Mooshak2.DAL
             return um.FindByName(name) != null;
         }
 
-        public ApplicationUser GetUser(string name)
+        public ApplicationUser GetUserByID(string name)
         {
             var um = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
             return um.FindByName(name);
@@ -104,12 +106,5 @@ namespace Mooshak2.DAL
             return user;
         }
 
-        public ApplicationUser GetUserById(string userId)
-        {
-            var um = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
-            ApplicationUser user = um.FindById(userId);
-
-            return user;
-        }
     }
 }
