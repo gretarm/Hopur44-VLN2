@@ -3,6 +3,8 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Mooshak2.Models;
 using Mooshak2.Models.Entities;
+using System.Linq;
+using System;
 
 namespace Mooshak2.DAL
 {
@@ -27,7 +29,7 @@ namespace Mooshak2.DAL
             return um.FindByName(name) != null;
         }
 
-        public ApplicationUser GetUser(string name)
+        public ApplicationUser GetUserByID(string name)
         {
             var um = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
             return um.FindByName(name);

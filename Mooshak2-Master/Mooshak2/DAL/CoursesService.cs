@@ -10,12 +10,27 @@ namespace Mooshak2.DAL
 {
     public class CoursesService
     {
-        public IEnumerable<Course> GetCoursesForUserId(ApplicationUser user)
+        private ApplicationDbContext _db;
+        public CoursesService(ApplicationDbContext context)
         {
-            var cor = (from enrollment  in DatabaseConnection.Db.Enrollments
-                          join courses in DatabaseConnection.Db.Courses 
-                          on enrollment.UserID equals user
-                          select courses);
+            _db = context;
+        }
+
+        public List<Course> GetCoursesForTeacher(ApplicationUser user)
+        {
+            var cor = (from e in DatabaseConnection.Db.Courses
+                       join em in DatabaseConnection.Db.Teachments on e.CourseID equals em.CourseID
+                       where em.UserID.Id == user.Id
+                       select e).ToList();
+            return cor;
+        }
+
+        public List<Course> GetCoursesForStudent(ApplicationUser user)
+        {
+            var cor = (from e in DatabaseConnection.Db.Courses
+                       join em in DatabaseConnection.Db.Enrollments on e.CourseID equals em.CourseID
+                       where em.UserID.Id == user.Id
+                       select e).ToList();
             return cor;
         }
     }
