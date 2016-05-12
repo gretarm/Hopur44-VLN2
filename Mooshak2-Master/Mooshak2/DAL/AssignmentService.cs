@@ -36,8 +36,9 @@ namespace Mooshak2.DAL
 
             var viewModel = new AssignmentViewModel
             {
+                /*
                 Title = assignment.Title,
-                Milestones = milestones
+                Milestones = milestones*/
 
             };
             return viewModel;

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using Mooshak2.Models.Entities;
+using Mooshak2.Models.ViewModels;
 
 namespace Mooshak2.Controllers
 {
@@ -41,15 +42,11 @@ namespace Mooshak2.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var asi = (from a in DatabaseConnection.Db.Assignments
-                       where a.CourseID == id.Value
-                       select new
-                       {
-                           a.ID,
-                           a.CourseID,
-                           a.Title,
-                           a.Description
-                       }).ToList();
+            var asi = (from assignment in DatabaseConnection.Db.Assignments
+                       join course in DatabaseConnection.Db.Courses
+                       on assignment.CourseID equals course.CourseID
+                       where course.CourseID == id.Value
+                       select new AssignmentViewModel { Title = assignment }).ToList();
 
             if (asi == null)
             {
@@ -60,6 +57,7 @@ namespace Mooshak2.Controllers
 
         public ActionResult Grade(int? id)
         {
+            /*
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -79,6 +77,8 @@ namespace Mooshak2.Controllers
                 return HttpNotFound();
             }
             return View(grad);
+            */
+            return View();
         }
         public ActionResult Students(int? id)
         {
@@ -87,14 +87,17 @@ namespace Mooshak2.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var cor = (from e in DatabaseConnection.Db.Enrollments
-                              where e.CourseID == id.Value
-                              select new
-                              {
-                                  e.EnrollmentID,
-                                  e.CourseID,
-                                  e.UserID
-                              }).SingleOrDefault();
+            var cor = (from enrollments in DatabaseConnection.Db.Enrollments
+
+                       join course in DatabaseConnection.Db.Courses
+                       on enrollments.CourseID equals course.CourseID
+
+                       join users in DatabaseConnection.Db.Users
+                       on enrollments.UserID.Id equals users.Id
+
+                       where enrollments.CourseID == 3
+
+                       select new StudentViewModel { ID = enrollments, Title = course, Name = users }).ToList();
 
             return View(cor);
         }
@@ -111,12 +114,8 @@ namespace Mooshak2.Controllers
                        on teachment.UserID.Id equals users.Id
 
                        where teachment.CourseID == id.Value
-                       select new
-                       {
-                           teachment.TeachmentID,
-                           course.Title,
-                           users.UserName
-                       }).ToList();
+                       select new TeachersViewModel { ID = teachment, Title = course, Name = users }).ToList();
+
 
             if (asi == null)
             {
@@ -125,7 +124,7 @@ namespace Mooshak2.Controllers
             return View(asi);
         }
 
-        [Authorize(Roles = "AdminX")]
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             return View();

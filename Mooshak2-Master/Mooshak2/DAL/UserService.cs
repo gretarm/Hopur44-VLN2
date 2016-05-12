@@ -6,6 +6,11 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Mooshak2.Models;
 using Mooshak2.Models.Entities;
 using Mooshak2.Models.ViewModels;
+using System.Web.Helpers;
+using System.Web.WebPages.Html;
+using System.Web.Security;
+using System.Web.UI;
+using Mooshak2.DAL;
 
 namespace Mooshak2.DAL
 {
@@ -83,8 +88,28 @@ namespace Mooshak2.DAL
         {
             var allUsers = _dbContext.Users.ToList();
             IEnumerable<UserRoleModelView> userRoles = allUsers.Select(
-                    user => new UserRoleModelView {Email = user.Email, Role = GetUserRoles(user.Id)[0]});
+                    user => new UserRoleModelView {Email = user.Email, Role = GetUserRoles(user.Id)[0], User = user}).OrderByDescending(x => x.Role);
             return userRoles;
+        }
+
+        public UserRoleModelView GetRoleModelViewByID(string userId)
+        {
+
+            UserRoleModelView user = new UserRoleModelView
+            {
+                Email = GetUserById(userId).Email,
+                Role = GetUserRoles(userId)[0],
+                User = GetUserById(userId)
+            };
+            return user;
+        }
+
+        public ApplicationUser GetUserById(string userId)
+        {
+            var um = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+            ApplicationUser user = um.FindById(userId);
+
+            return user;
         }
     }
 }
