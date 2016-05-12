@@ -1,14 +1,20 @@
 ﻿@model Mooshak2.Models.ViewModels.TeacherViewModel
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Home";
 }
 
 <div class="mainContent body-content col-md-¨4">
     <h2>Teacher</h2>
     @foreach (var item in Model.Courses)
     {
-        @Html.ActionLink(item.Title + "\u00BB", "../Course/ID", new { id = item.CourseID }, new { @class = "btn btn-default menuButton" })
-    }
+        <div class="col-md-6">
+            <h2>@Html.DisplayFor(modelItem => item.Title)</h2>
+            <p>
+                @Html.DisplayFor(modelItem => item.Details)
+            </p>
+
+            @Html.ActionLink("Go to course \u00BB", "../Course/ID", new { id = item.CourseID }, new { @class = "btn btn-default" })
+        </div>
+     }
 </div>
-<a href="~/Views/Teacher/Index.cshtml">~/Views/Teacher/Index.cshtml</a>
