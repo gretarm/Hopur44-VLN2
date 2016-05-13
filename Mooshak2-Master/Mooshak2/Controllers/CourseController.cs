@@ -35,7 +35,7 @@ namespace Mooshak2.Controllers
             }
             return View(cor);
         }
-
+        
         public ActionResult Assignments(int? id)
         {
             if (id == null)

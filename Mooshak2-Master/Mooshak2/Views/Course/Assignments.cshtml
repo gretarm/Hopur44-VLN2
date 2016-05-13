@@ -13,14 +13,22 @@
 <div class="row">
 
     <div class="col-md-12">
-        @foreach (var item in Model)
-        {
-            @Html.ActionLink(@item.Title.Title, "../Assignments/Index", new { @class = "btn btn-default" })
-        }
+        <ul class="list-group">
+            @foreach (var item in Model)
+            {
+                <li class="list-group-item">@Html.ActionLink(@item.Title.Title, "../Assignments/Index", new { @class = "btn btn-default" })</li>
+            }
 
-        @if (User.IsInRole("Teacher") == true)
-        {
-            <a href="">Add project</a>
-        }
-    </div>
+            @if (User.IsInRole("Teacher") == true)
+            {
+                <li class="list-group-item"><a href="">Add project</a></li>
+            }
+
+
+            @if (User.IsInRole("Student") == true)
+            {
+                <li class="list-group-item">@Html.ActionLink("Submit solution", "../Assignments/Solution", new { @class = "btn btn-default" })</li>
+            }
+</ul>
+</div>
 </div>

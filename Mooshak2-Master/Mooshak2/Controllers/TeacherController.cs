@@ -29,6 +29,11 @@ namespace Mooshak2.Controllers
 
             model.Courses = _coursesService.GetCoursesForTeacher(user);
             
+            if(model.Courses.Count == 0)
+            {
+                throw new NoAssignedCoursesException();
+            }
+
 			return View(model);
         }
 
