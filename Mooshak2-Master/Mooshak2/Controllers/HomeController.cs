@@ -17,13 +17,18 @@ namespace Mooshak2.Controllers
  
     public class HomeController : Controller
     {
+        private  readonly UserService _userService = new UserService();
         [Authorize]
         public ActionResult Index()
         {
+          
             //TODO Implement exeption in case missing role
-            UserService redirect = new UserService();
-            IList<string> role = redirect.GetUserRoles(User.Identity.GetUserId());
-
+            var role = _userService.GetUserRoles(User.Identity.GetUserId())[0];
+            //Temp fix
+            if (role == "Admin") 
+            {
+                return View("Admin");
+            }
             return RedirectToAction("Index", role[0]);
         }
 

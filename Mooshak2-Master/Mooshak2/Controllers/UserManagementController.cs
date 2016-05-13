@@ -72,15 +72,13 @@ namespace Mooshak2.Controllers
         [HttpPost]
         public ActionResult Edit(UserRoleModelView user)
         {
-            if (ModelState.IsValid)
-            {
+
                 //TODO: Really needs better validation
                 _userService.UpdateUser(user);
 
-                return RedirectToAction("Details", user.UserID);
-            }
+                return RedirectToAction("Details", new {id = user.UserID});
 
-            return RedirectToAction("Index");
+
         }
 
         public ActionResult Details(string id)
@@ -117,12 +115,12 @@ namespace Mooshak2.Controllers
             return View(user);
         }
         [HttpPost]
-        public ActionResult Delete(UserRoleModelView user)
+        public ActionResult Delete(UserRoleModelView model)
         {
-            if (ModelState.IsValid)
-            {
-                _userService.RemoveUser(user.UserID);
-            }
+            
+            
+                _userService.RemoveUser(model.UserID);
+            
 
             return RedirectToAction("Index");
         }

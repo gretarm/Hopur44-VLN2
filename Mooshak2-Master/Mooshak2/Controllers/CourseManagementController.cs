@@ -99,10 +99,10 @@ namespace Mooshak2.Controllers
         {
             if (ModelState.IsValid)
             {
-                _coursesService.RemoveCourse(course);
+                _coursesService.RemoveCourse(course.CourseID);
             }
 
-            return View("Index");
+            return RedirectToAction("Index");
         }
     }
 }

@@ -11,13 +11,13 @@ namespace Mooshak2.DAL
 {
     public class CoursesService
     {
-        private readonly ApplicationDbContext _dbContext = new ApplicationDbContext();
-        
+        private ApplicationDbContext _dbContext = new ApplicationDbContext();
+
         public IEnumerable<Course> GetAllCourses()
         {
             IEnumerable<Course> courses = (from c in _dbContext.Courses
-                                           orderby c.Title ascending
-                                           select c).ToList();
+                orderby c.Title ascending
+                select c).ToList();
             return courses;
         }
 
@@ -29,26 +29,26 @@ namespace Mooshak2.DAL
         public Course GetCourseById(int id)
         {
             var cor = (from item in _dbContext.Courses
-                          where item.CourseID == id
-                          select item).SingleOrDefault();
+                where item.CourseID == id
+                select item).SingleOrDefault();
             return cor;
         }
 
         public List<Course> GetCoursesForTeacher(ApplicationUser user)
         {
             var cor = (from e in _dbContext.Courses
-                       join em in _dbContext.Teachments on e.CourseID equals em.CourseID
-                       where em.UserID.Id == user.Id
-                       select e).ToList();
+                join em in _dbContext.Teachments on e.CourseID equals em.CourseID
+                where em.UserID.Id == user.Id
+                select e).ToList();
             return cor;
         }
 
         public List<Course> GetCoursesForStudent(ApplicationUser user)
         {
             var cor = (from e in _dbContext.Courses
-                       join em in _dbContext.Enrollments on e.CourseID equals em.CourseID
-                       where em.UserID.Id == user.Id
-                       select e).ToList();
+                join em in _dbContext.Enrollments on e.CourseID equals em.CourseID
+                where em.UserID.Id == user.Id
+                select e).ToList();
             return cor;
         }
 
@@ -56,28 +56,28 @@ namespace Mooshak2.DAL
         {
             var cor = (from enrollments in _dbContext.Enrollments
 
-                       join course in _dbContext.Courses
-                       on enrollments.CourseID equals course.CourseID
+                join course in _dbContext.Courses
+                    on enrollments.CourseID equals course.CourseID
 
-                       join users in _dbContext.Users
-                       on enrollments.UserID.Id equals users.Id
+                join users in _dbContext.Users
+                    on enrollments.UserID.Id equals users.Id
 
-                       where enrollments.CourseID == 3
+                where enrollments.CourseID == 3
 
-                       select new StudentViewModel { ID = enrollments, Title = course, Name = users }).ToList();
+                select new StudentViewModel {ID = enrollments, Title = course, Name = users}).ToList();
             return cor;
         }
 
         public List<TeacherViewModel> GetTeachersInCourse(int courseId)
         {
             var asi = (from teachment in _dbContext.Teachments
-                       join course in _dbContext.Courses
-                       on teachment.CourseID equals course.CourseID
-                       join users in _dbContext.Users
-                       on teachment.UserID.Id equals users.Id
+                join course in _dbContext.Courses
+                    on teachment.CourseID equals course.CourseID
+                join users in _dbContext.Users
+                    on teachment.UserID.Id equals users.Id
 
-                       where teachment.CourseID == courseId
-                       select new TeacherViewModel { ID = teachment, Title = course, Name = users }).ToList();
+                where teachment.CourseID == courseId
+                select new TeacherViewModel {ID = teachment, Title = course, Name = users}).ToList();
             return asi;
         }
 
@@ -98,10 +98,13 @@ namespace Mooshak2.DAL
             _dbContext.SaveChanges();
         }
 
-        public void RemoveCourse(Course model)
+        public void RemoveCourse(int id)
         {
-            _dbContext.Courses.Remove(model);
 
+            var cor = (from c in _dbContext.Courses
+                where c.CourseID == id
+                select c).FirstOrDefault();
+            _dbContext.Courses.Remove(cor);
             _dbContext.SaveChanges();
         }
     }

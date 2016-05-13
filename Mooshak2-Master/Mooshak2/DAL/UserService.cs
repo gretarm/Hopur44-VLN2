@@ -16,7 +16,11 @@ using System.Web.Mvc;
 
 
 namespace Mooshak2.DAL
-{
+{   
+    /// <summary>
+    /// User service klasinn er að miklu leyti byggður á klasa sem patrekur smíðaði og gaf okkur aðgang að í VEFF
+    /// Við tókum okkur það leyfi að nota hann og bæta við og breyta eftir þörfum
+    /// </summary>
     public class UserService
     {
         private readonly ApplicationDbContext _dbContext = new ApplicationDbContext();
@@ -181,8 +185,11 @@ namespace Mooshak2.DAL
 
         public void RemoveUser(string userId)
         {
-            //_dbContext.Users.Remove(GetUserById(userId));
-            //_dbContext.SaveChanges();
+            var usr = (from u in _dbContext.Users
+                where u.Id == userId
+                select u).FirstOrDefault();
+            _dbContext.Users.Remove(usr);
+            _dbContext.SaveChanges();
         }
 
         public void UpdateUser(UserRoleModelView user)
@@ -194,7 +201,7 @@ namespace Mooshak2.DAL
 
             var role = (from r in _dbContext.Roles where r.Id == user.Role select r.Name).FirstOrDefault();
 
-            if ( UserIsInRole(user.UserID, role))
+            if ( ! UserIsInRole(user.UserID, role))
             {
                 ClearUserRoles(user.UserID);
                 AddUserToRole(user.UserID, role);
