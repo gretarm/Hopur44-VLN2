@@ -1,0 +1,43 @@
+@using Microsoft.AspNet.Identity
+@{
+    ViewBag.Title = "C++ Compile test page";
+}
+
+<h2>Welcome back @Html.ActionLink(User.Identity.GetUserName(), "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" }) !</h2>
+
+<p>Select a course</p>
+<div class="row">
+    @for (int i = 0; i < 4; i++)
+    {
+        <input type="button" value="Course @i " class="btn btn-default menuButton" />
+    }
+</div>
+
+
+<div class="row">
+    <h2>@ViewBag.Title.</h2>
+    <ol class="breadcrumb">
+        <li class="active">Home</li>
+    </ol>
+
+    <div class="col-md-4">
+
+
+        @using (Html.BeginForm())
+        {
+            <input type="Submit" class="btn btn-primary" value="Compile Test Code" />}
+
+        @if (ViewBag.Output != null)
+        {
+            <ul>
+                @foreach (var line in ViewBag.Output)
+                {
+                    <li>@line</li>
+                }
+            </ul>}
+    </div>
+    <div class="col-md-4">
+    </div>
+    <div class="col-md-4">
+    </div>
+</div>
