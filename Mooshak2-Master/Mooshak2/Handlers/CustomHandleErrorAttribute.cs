@@ -27,6 +27,10 @@ namespace Mooshak2.Handlers
 			{
 				viewName = "NoAssignedCoursesError";
 			}
+			else if (TheException is NoCourseFoundException)
+			{
+				viewName = "NoCourseFoundError";
+			}
 
 			HandleErrorInfo model = new HandleErrorInfo(filterContext.Exception, CurrentController, CurrentActionName);
 			ViewResult result = new ViewResult

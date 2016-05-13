@@ -31,7 +31,7 @@ namespace Mooshak2.Controllers
 
             if (cor == null)
             {
-                return HttpNotFound();
+                throw new NoCourseFoundException();
             }
             return View(cor);
         }

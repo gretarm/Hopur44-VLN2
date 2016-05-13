@@ -207,6 +207,7 @@
     <Compile Include="DAL\CoursesService.cs" />
     <Compile Include="DAL\SubmissionService.cs" />
     <Compile Include="Exceptions\NoAssignedCoursesException.cs" />
+    <Compile Include="Exceptions\NoCourseFoundException.cs" />
     <Compile Include="Exceptions\NoStudentInCourseException.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -331,12 +332,10 @@
     <Content Include="Views\UserManagement\Details.cshtml" />
     <Content Include="Views\UserManagement\Delete.cshtml" />
     <Content Include="Views\Home\Admin.cshtml" />
-
     <Content Include="Views\Shared\NoStudentError.cshtml" />
     <Content Include="Views\Shared\NoAssignedCoursesError.cshtml" />
-
     <Content Include="Views\Teacher\Create_Assignment.cshtml" />
-
+    <Content Include="Views\Shared\NoCourseFoundError.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
