@@ -327,6 +327,7 @@
     <Content Include="Views\UserManagement\Edit.cshtml" />
     <Content Include="Views\UserManagement\Details.cshtml" />
     <Content Include="Views\UserManagement\Delete.cshtml" />
+    <Content Include="Views\Home\Admin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

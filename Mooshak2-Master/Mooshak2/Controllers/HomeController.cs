@@ -24,7 +24,7 @@ namespace Mooshak2.Controllers
             UserService redirect = new UserService();
             IList<string> role = redirect.GetUserRoles(User.Identity.GetUserId());
 
-            return RedirectToActionPermanent("Index", role[0]);
+            return RedirectToAction(role[0]);
         }
 
 
@@ -43,6 +43,10 @@ namespace Mooshak2.Controllers
             return View();
         }
 
-
+        [Authorize(Roles = "Admin")]
+        public ActionResult Admin()
+        {
+            return View();
+        }
     }
 }

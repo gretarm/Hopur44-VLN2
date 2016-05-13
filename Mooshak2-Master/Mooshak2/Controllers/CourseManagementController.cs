@@ -9,6 +9,7 @@ using Mooshak2.Models.Entities;
 
 namespace Mooshak2.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class CourseManagementController : Controller
     {
         private readonly CoursesService _coursesService = new CoursesService();
