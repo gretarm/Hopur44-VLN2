@@ -39,6 +39,10 @@ namespace Mooshak2.Handlers
 			{
 				viewName = "MissingIdError";
 			}
+			else if(TheException is NoAssignmentsInCourseException)
+			{
+				viewName = "NoAssignmentInCourseError";
+			}
 
 			HandleErrorInfo model = new HandleErrorInfo(filterContext.Exception, CurrentController, CurrentActionName);
 			ViewResult result = new ViewResult

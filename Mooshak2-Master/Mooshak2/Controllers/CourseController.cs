@@ -44,9 +44,9 @@ namespace Mooshak2.Controllers
 			}
             var asi = _assignmentService.GetAssignmentsInCourse(id.Value);
 
-            if (asi == null)
+            if (asi.Count == 0)
             {
-                return HttpNotFound();
+				throw new NoAssignmentsInCourseException();
             }
             return View(asi);
         }
