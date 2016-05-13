@@ -14,14 +14,9 @@
 <div class="row">
 
     <div class="col-md-12">
-
-        @if (!(Model.Count() > 0))
-        {
-            <div class="alert alert-info">No students in course</div>
-        }
         @foreach (var item in Model)
         {
-            @Html.ActionLink(@item.Title.Title, "Assignment", new { id = item.Title.Title }, new { @class = "btn btn-default" })
+            @Html.ActionLink(@item.Title.Title, "../Assignments/Index", new { @class = "btn btn-default" })
         }
 
         @if (User.IsInRole("Teacher") == true)
@@ -29,5 +24,4 @@
             <a href="">Add project</a>
         }
     </div>
-
 </div>

@@ -1,20 +1,28 @@
-﻿@model IEnumerable<Mooshak2.Models.Entities.Assignment >
+﻿
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "C++ Compile test page";
 }
 
-<h2>Index</h2>
+<div class="row">
+    <div class="col-md-4">
 
-<div class="col-md-5">
-    @foreach (var item in Model)
-    {
-    <a href="">@Html.DisplayFor(modelItem => item.Title)</a>
-    <br />
-    }
+        @using (Html.BeginForm())
+        {
+            <input type="Submit" class="btn btn-primary" value="Compile Test Code" />
+        }
 
-    @if (User.IsInRole("Teacher") == true)
-    {
-       <a href="">Add project</a>
-    }
+        @if (ViewBag.Output != null)
+        {
+            <ul>
+                @foreach (var line in ViewBag.Output)
+				{
+                    <li>@line</li>
+				}
+            </ul>
+        }
+    </div>
+    <div class="col-md-4">
+    </div>
+    <div class="col-md-4">
+    </div>
 </div>
-
