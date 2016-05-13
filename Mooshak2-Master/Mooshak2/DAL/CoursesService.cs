@@ -62,7 +62,7 @@ namespace Mooshak2.DAL
                 join users in _dbContext.Users
                     on enrollments.UserID.Id equals users.Id
 
-                where enrollments.CourseID == 3
+                where enrollments.CourseID == courseId
 
                 select new StudentViewModel {ID = enrollments, Title = course, Name = users}).ToList();
             return cor;
