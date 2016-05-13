@@ -24,7 +24,7 @@ namespace Mooshak2.Controllers
             UserService redirect = new UserService();
             IList<string> role = redirect.GetUserRoles(User.Identity.GetUserId());
 
-            return RedirectToAction(role[0]);
+            return RedirectToAction("Index", role[0]);
         }
 
 
