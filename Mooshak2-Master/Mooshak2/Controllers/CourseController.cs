@@ -24,7 +24,7 @@ namespace Mooshak2.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+				throw new MissingIdException();
             }
 
             Course cor = _coursesService.GetCourseById(id.Value);
@@ -40,8 +40,9 @@ namespace Mooshak2.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+				throw new MissingIdException();
+
+			}
             var asi = _assignmentService.GetAssignmentsInCourse(id.Value);
 
             if (asi == null)
@@ -80,7 +81,7 @@ namespace Mooshak2.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+				throw new MissingIdException();
             }
             var courses = _coursesService.GetStudentsInCourse(id.Value);
 
@@ -91,18 +92,19 @@ namespace Mooshak2.Controllers
 
 			return View(courses);
         }
+
         public ActionResult Teachers(int? id)
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                throw new MissingIdException();
             }
 
             var asi = _coursesService.GetTeachersInCourse(id.Value);
 
             if (asi == null)
             {
-                return HttpNotFound();
+                throw new NoTeacherInCourseException();
             }
             return View(asi);
         }

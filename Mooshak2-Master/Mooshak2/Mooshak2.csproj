@@ -206,9 +206,11 @@
     <Compile Include="DAL\ApplicationDbContext.cs" />
     <Compile Include="DAL\CoursesService.cs" />
     <Compile Include="DAL\SubmissionService.cs" />
+    <Compile Include="Exceptions\MissingIdException.cs" />
     <Compile Include="Exceptions\NoAssignedCoursesException.cs" />
     <Compile Include="Exceptions\NoCourseFoundException.cs" />
     <Compile Include="Exceptions\NoStudentInCourseException.cs" />
+    <Compile Include="Exceptions\NoTeacherInCourseException.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -336,6 +338,8 @@
     <Content Include="Views\Shared\NoAssignedCoursesError.cshtml" />
     <Content Include="Views\Teacher\Create_Assignment.cshtml" />
     <Content Include="Views\Shared\NoCourseFoundError.cshtml" />
+    <Content Include="Views\Shared\NoCourseTeacherError.cshtml" />
+    <Content Include="Views\Shared\MissingIdError.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

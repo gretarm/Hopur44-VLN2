@@ -1,13 +1,10 @@
 ﻿@using Microsoft.AspNet.Identity
 
-@{
-    ViewBag.Title = "Home";
-}
-
 <h2>Welcome back, @User.Identity.GetUserName()</h2>
 
 <div class="mainContent body-content col-md-¨4">
     <div class="col-md-6">
-        <p class="alert alert-info">You are not assigned to a course</p>
+        <h3 class="text-danger"> Error</h3>
+        <p class="alert">No ID to search for!</p>
     </div>
 </div>
