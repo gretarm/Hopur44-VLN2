@@ -25,8 +25,30 @@ namespace Mooshak2.Controllers
             var model = _assignmentService.GetAssignmentByID(id);
             return View(model);
         }
+        public ActionResult Solution()
+        {
+            return View();
+        }
 
-		[HttpPost]
+        [HttpPost]
+        public ActionResult Solution(HttpPostedFileBase file)
+        {
+
+            if (file.ContentLength > 0)
+            {
+                var assignment = "Verkefni1";
+
+                var fileName = Path.GetFileName(file.FileName);
+                var newName = User.Identity.Name + "_" + assignment + "_" + fileName;
+
+                var path = Path.Combine(Server.MapPath("~/Content/Files/Assignments/Milestones/Submissions/"), newName);
+                file.SaveAs(path);
+            }
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
 		public ActionResult Index(FormCollection data)
 		{
 			// To simplify matters, we declare the code here.

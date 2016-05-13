@@ -28,12 +28,7 @@ namespace Mooshak2.Controllers
             var user = _userService.GetUserById(userId);
 
             model.Courses = _coursesService.GetCoursesForTeacher(user);
-
-			if (model.Name == null)
-			{
-				throw new NoAssignedCoursesException();
-			}
-
+            
 			return View(model);
         }
 

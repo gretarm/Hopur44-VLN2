@@ -7,19 +7,16 @@
 
 <ol class="breadcrumb">
     <li><a href="~/Home">Home</a></li>
-    <li><a href="~/Course">Course</a></li>
     <li class="active">Students</li>
 </ol>
 
 <div class="row">
     <div class="col-md-12">
-        @foreach (var item in Model)
-        {
-            <div>@item.Name.UserName</div>
-        }
-
+        <ul class="list-group">
+            @foreach (var item in Model)
+            {
+                <li class="list-group-item">@item.Name.UserName</li>
+            }
+        </ul>
     </div>
-
-
-
 </div>
