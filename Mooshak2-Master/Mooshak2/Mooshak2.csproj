@@ -343,6 +343,7 @@
     <Content Include="Views\Shared\MissingIdError.cshtml" />
     <Content Include="Views\Shared\NoAssignmentInCourseError.cshtml" />
     <Content Include="Views\Assignments\Solution.cshtml" />
+    <Content Include="Views\Home\Student.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
