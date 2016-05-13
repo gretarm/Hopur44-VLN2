@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Mooshak2.DAL;
 using Mooshak2.Models;
+using Mooshak2.Models.Entities;
 using Mooshak2.Models.ViewModels;
 
 namespace Mooshak2.Controllers
@@ -44,35 +46,85 @@ namespace Mooshak2.Controllers
             if (ModelState.IsValid)
             {
                 _userService.AddUser(user);
-                //return RedirectToAction("Details", new { id = newCourse.CourseID });
+                ApplicationUser newUser = _userService.GetUserByName(user.Email);
+                return RedirectToAction("Details", new { id = newUser.Id });
             }
             return RedirectToAction("Index");
         }
 
         public ActionResult Edit(string id)
         {
-            throw new NotImplementedException();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var user = _userService.GetRoleModelViewByID(id);
+
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(user);
         }
 
         [HttpPost]
         public ActionResult Edit(UserRoleModelView user)
         {
-            throw new NotImplementedException();
+            if (ModelState.IsValid)
+            {
+                //TODO: Really needs better validation
+                _userService.UpdateUser(user);
+
+                return RedirectToAction("Details", user.UserID);
+            }
+
+            return RedirectToAction("Index");
         }
 
         public ActionResult Details(string id)
         {
-            throw new NotImplementedException();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var user = _userService.GetRoleModelViewByID(id);
+
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(user);
         }
 
         public ActionResult Delete(string id)
         {
-            throw new NotImplementedException(); ;
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var user = _userService.GetRoleModelViewByID(id);
+
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(user);
         }
         [HttpPost]
         public ActionResult Delete(UserRoleModelView user)
         {
-            throw new NotImplementedException();
+            if (ModelState.IsValid)
+            {
+                _userService.RemoveUser(user.UserID);
+            }
+
+            return RedirectToAction("Index");
         }
 
 

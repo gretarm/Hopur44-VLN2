@@ -170,15 +170,36 @@ namespace Mooshak2.DAL
         {
             var um = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
             var rm = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new ApplicationDbContext()));
-
-
-
+            
             var newUser = new ApplicationUser {Email = user.Email,  UserName = user.Email};
             um.Create(newUser, user.Password);
             var rid = (from r in _dbContext.Roles where r.Id == user.Role select r.Name).FirstOrDefault();
             um.AddToRole(GetUserByName(user.Email).Id, rid);
 
 
+        }
+
+        public void RemoveUser(string userId)
+        {
+            //_dbContext.Users.Remove(GetUserById(userId));
+            //_dbContext.SaveChanges();
+        }
+
+        public void UpdateUser(UserRoleModelView user)
+        {
+            var oldUser = GetUserById(user.UserID);
+
+            oldUser.Email = user.Email;
+            oldUser.UserName = GetUserById(user.UserID).UserName;
+
+            var role = (from r in _dbContext.Roles where r.Id == user.Role select r.Name).FirstOrDefault();
+
+            if ( UserIsInRole(user.UserID, role))
+            {
+                ClearUserRoles(user.UserID);
+                AddUserToRole(user.UserID, role);
+            }
+            _dbContext.SaveChanges();
         }
     }
 }
