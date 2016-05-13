@@ -12,9 +12,6 @@ using Mooshak2.Models;
 
 namespace Mooshak2.Controllers
 {
-
-
- 
     public class HomeController : Controller
     {
         private  readonly UserService _userService = new UserService();
@@ -29,7 +26,7 @@ namespace Mooshak2.Controllers
             {
                 return View("Admin");
             }
-            return RedirectToAction("Index", role[0]);
+            return RedirectToAction("Index", role);
         }
 
 
