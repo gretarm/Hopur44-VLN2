@@ -1,0 +1,9 @@
+
+admin2@ru.is pass: Admin.2
+teacher@ru.is pass Teacher.2
+alCapone@ru.is pass alCapone.1
+hrafnLoftson@ru.is pass hrafnLoftson.1
+magnusmar@ru.is pass Magnus.1
+brjornThor@ru.is pass brjornThor.1
+
+allir aðrir Asd!23
