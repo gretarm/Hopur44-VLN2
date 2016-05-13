@@ -13,6 +13,7 @@ using Mooshak2.DAL;
 using Mooshak2.Models;
 using Mooshak2.Models.Entities;
 using Mooshak2.Models.ViewModels;
+using Mooshak2.Exceptions;
 
 namespace Mooshak2.Controllers
 {
@@ -30,6 +31,11 @@ namespace Mooshak2.Controllers
             var user = _userService.GetUserById(userId);
 
             model.Courses = _coursesService.GetCoursesForStudent(user);
+
+			if (model.Courses == null)
+			{
+				throw new NoAssignedCoursesException();
+			}
             return View(model);
         }
     }

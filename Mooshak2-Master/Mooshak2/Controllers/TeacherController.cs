@@ -9,6 +9,7 @@ using Mooshak2.Models;
 using Mooshak2.Models.Entities;
 using Microsoft.AspNet.Identity;
 using Mooshak2.Models.ViewModels;
+using Mooshak2.Exceptions;
 
 namespace Mooshak2.Controllers
 {
@@ -26,7 +27,13 @@ namespace Mooshak2.Controllers
             var user = _userService.GetUserById(userId);
 
             model.Courses = _coursesService.GetCoursesForTeacher(user);
-            return View(model);
+
+			if (model.Name == null)
+			{
+				throw new NoAssignedCoursesException();
+			}
+
+			return View(model);
         }
 
 		[Authorize]
@@ -37,11 +44,11 @@ namespace Mooshak2.Controllers
 				return Index();
 			}
 
-		    Course course = _coursesService.GetCourseByName(title.ToString());
+		    var course = _coursesService.GetCourseByName(title.ToString());
 
 			if (course == null)
 			{
-				return HttpNotFound();
+				throw new NoAssignedCoursesException();
 			}
 
 			return View(course);

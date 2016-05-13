@@ -29,7 +29,7 @@ namespace Mooshak2.Controllers
             {
                 return View("Admin");
             }
-            return RedirectToAction("Index", role[0]);
+            return RedirectToAction("Index", role);
         }
 
 

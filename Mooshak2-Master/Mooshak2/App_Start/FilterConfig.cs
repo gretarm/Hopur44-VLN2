@@ -1,4 +1,5 @@
-﻿using System.Web;
+﻿using Mooshak2.Handlers;
+using System.Web;
 using System.Web.Mvc;
 
 namespace Mooshak2
@@ -7,7 +8,8 @@ namespace Mooshak2
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
-            filters.Add(new HandleErrorAttribute());
-        }
+			//filters.Add(new HandleErrorAttribute());
+			filters.Add(new CustomHandleErrorAttribute());
+		}
     }
 }

@@ -206,9 +206,12 @@
     <Compile Include="DAL\ApplicationDbContext.cs" />
     <Compile Include="DAL\CoursesService.cs" />
     <Compile Include="DAL\SubmissionService.cs" />
+    <Compile Include="Exceptions\NoAssignedCoursesException.cs" />
+    <Compile Include="Exceptions\NoStudentInCourseException.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Handlers\CustomHandleErrorAttribute.cs" />
     <Compile Include="Migrations\201605111225036_init.cs" />
     <Compile Include="Migrations\201605111225036_init.Designer.cs">
       <DependentUpon>201605111225036_init.cs</DependentUpon>
@@ -241,6 +244,7 @@
     <Compile Include="DAL\AssignmentService.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Controllers\CourseManagementController.cs" />
+    <Compile Include="Utilities\Logger.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -327,6 +331,8 @@
     <Content Include="Views\UserManagement\Details.cshtml" />
     <Content Include="Views\UserManagement\Delete.cshtml" />
     <Content Include="Views\Home\Admin.cshtml" />
+    <Content Include="Views\Shared\NoStudentError.cshtml" />
+    <Content Include="Views\Shared\NoAssignedCoursesError.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

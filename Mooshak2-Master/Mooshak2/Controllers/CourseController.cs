@@ -7,6 +7,7 @@ using Mooshak2.DAL;
 using Mooshak2.Models;
 using Mooshak2.Models.Entities;
 using Mooshak2.Models.ViewModels;
+using Mooshak2.Exceptions;
 
 namespace Mooshak2.Controllers
 {
@@ -83,7 +84,12 @@ namespace Mooshak2.Controllers
             }
             var courses = _coursesService.GetStudentsInCourse(id.Value);
 
-            return View(courses);
+			if (courses == null)
+			{
+				throw new NoStudentInCourseException();
+			}
+
+			return View(courses);
         }
         public ActionResult Teachers(int? id)
         {
