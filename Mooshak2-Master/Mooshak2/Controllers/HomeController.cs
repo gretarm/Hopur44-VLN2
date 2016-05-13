@@ -19,7 +19,6 @@ namespace Mooshak2.Controllers
         public ActionResult Index()
         {
           
-            //TODO Implement exeption in case missing role
             var role = _userService.GetUserRoles(User.Identity.GetUserId())[0];
 
             return RedirectToAction(role);
@@ -54,10 +53,15 @@ namespace Mooshak2.Controllers
 
             if (student.Courses.Count > 0)
             {
-                return RedirectToAction("Index", "Student", student);
+                return RedirectToAction("Index", "Student");
             }
             
             return View();
+        }
+        [Authorize(Roles = "Teacher")]
+        public ActionResult Teacher()
+        {
+            return RedirectToAction("Index", "Teacher");
         }
     }
 }
