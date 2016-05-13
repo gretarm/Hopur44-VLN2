@@ -40,6 +40,5 @@ namespace Mooshak2.DAL
         {
             return new ApplicationDbContext();
         }
-
     }
 }

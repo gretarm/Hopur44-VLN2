@@ -7,5 +7,6 @@ namespace Mooshak2.Models.ViewModels
 {
     public class CoursesViewModel
     {
+        
     }
 }

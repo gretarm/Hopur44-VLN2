@@ -12,6 +12,7 @@ using System.Web.Security;
 using System.Web.UI;
 using Mooshak2.DAL;
 using System;
+using System.Web.Mvc;
 
 
 namespace Mooshak2.DAL
@@ -35,6 +36,14 @@ namespace Mooshak2.DAL
             return null;
         }
 
+        public IEnumerable<UserRoleModelView> GetAllUserInRole(string role)
+        {
+            var allUsers = GetAllUserAndRole();
+            var userInRole = (from item in allUsers where item.Role == role orderby item.Email select item);
+
+            return userInRole;
+        }
+    
         public bool RoleExists(string name)
         {
             var rm = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new ApplicationDbContext()));
@@ -106,18 +115,33 @@ namespace Mooshak2.DAL
         {
             var allUsers = _dbContext.Users.ToList();
             IEnumerable<UserRoleModelView> userRoles = allUsers.Select(
-                    user => new UserRoleModelView {Email = user.Email, Role = GetUserRoles(user.Id)[0], User = user}).OrderByDescending(x => x.Role);
+                    user => new UserRoleModelView {Email = user.Email, Role = GetUserRoles(user.Id)[0], UserID = user.Id}).OrderByDescending(x => x.Role);
             return userRoles;
         }
 
         public UserRoleModelView GetRoleModelViewByID(string userId)
         {
 
-            UserRoleModelView user = new UserRoleModelView
+            var user = new UserRoleModelView
             {
                 Email = GetUserById(userId).Email,
                 Role = GetUserRoles(userId)[0],
-                User = GetUserById(userId)
+                UserID = userId,
+                Password = null,
+                AllRoles = GetAllRoles()
+            };
+            return user;
+        }
+        public UserRoleModelView GetRoleModelView()
+        {
+
+            var user = new UserRoleModelView
+            {
+                Email = null,
+                Role = null,
+                UserID = null,
+                Password = null,
+                AllRoles = GetAllRoles()
             };
             return user;
         }
@@ -127,6 +151,34 @@ namespace Mooshak2.DAL
             var user = (from u in _dbContext.Users where u.Id == userid select u).SingleOrDefault();
 
             return user;
+        }
+
+        public IEnumerable<System.Web.Mvc.SelectListItem> GetAllRoles()
+        {
+
+            IList<IdentityRole> roles = _dbContext.Roles.ToList();
+            var allroles = from r in roles
+                            select new System.Web.Mvc.SelectListItem
+                            {
+                                Text = r.Name,
+                                Value = r.Id
+                            };
+            return allroles;
+        }
+
+        public void AddUser(UserRoleModelView user)
+        {
+            var um = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+            var rm = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new ApplicationDbContext()));
+
+
+
+            var newUser = new ApplicationUser {Email = user.Email,  UserName = user.Email};
+            um.Create(newUser, user.Password);
+            var rid = (from r in _dbContext.Roles where r.Id == user.Role select r.Name).FirstOrDefault();
+            um.AddToRole(GetUserByName(user.Email).Id, rid);
+
+
         }
     }
 }

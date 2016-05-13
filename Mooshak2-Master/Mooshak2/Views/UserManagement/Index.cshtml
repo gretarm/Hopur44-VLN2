@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Mooshak2.Models.ViewModels.UserRoleModelView>
+
+@{
+    ViewBag.Title = "Users";
+}
+
+<h2>Users</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<p>
+    @Html.ActionLink("Show all users", "Index", "UserManagement", null, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Show only teachers", "IndexTeachers", "UserManagement", null, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Show only students", "IndexStudents", "UserManagement", null, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Show only Admins", "IndexAdmins", "UserManagement", null, new { @class = "btn btn-primary" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Role)
+        </th>
+        <th></th>
+        <th></th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Role)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new {id = item.UserID})
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new {id = item.UserID})
+            </td>
+            <td>
+                @Html.ActionLink("Delete", "Delete", new { id = item.UserID })
+            </td>
+        </tr>
+    }
+
+</table>

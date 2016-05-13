@@ -100,31 +100,5 @@ namespace Mooshak2.Controllers
             }
             return View(asi);
         }
-
-        [Authorize(Roles = "Admin")]
-        public ActionResult Delete(int? id)
-        {
-            return View();
-        }
-
-
-        [Authorize(Roles = "Admin")]
-        public ActionResult Edit(int? id)
-        {
-            return View();
-        }
-
-        [Authorize(Roles = "Admin")]
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        public ActionResult Detail(int? id)
-        {
-            return View();
-        }
-
-
     }
 }

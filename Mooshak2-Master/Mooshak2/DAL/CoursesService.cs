@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using Mooshak2.Models;
@@ -78,6 +79,30 @@ namespace Mooshak2.DAL
                        where teachment.CourseID == courseId
                        select new TeacherViewModel { ID = teachment, Title = course, Name = users }).ToList();
             return asi;
+        }
+
+        public Course AddNewCourse(Course model)
+        {
+            var newCourse = _dbContext.Courses.Add(model);
+            _dbContext.SaveChanges();
+
+            return newCourse;
+        }
+
+        public void UpdateCourse(Course model)
+        {
+            var course = GetCourseById(model.CourseID);
+
+            course.Title = model.Title;
+            course.Details = model.Details;
+            _dbContext.SaveChanges();
+        }
+
+        public void RemoveCourse(Course model)
+        {
+            _dbContext.Courses.Remove(model);
+
+            _dbContext.SaveChanges();
         }
     }
 }

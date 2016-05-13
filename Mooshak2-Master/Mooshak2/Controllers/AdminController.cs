@@ -18,44 +18,8 @@ namespace Mooshak2.Controllers
     [Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
-        private UserService _userService = new UserService();
-        private CoursesService _coursesService = new CoursesService();
         // GET: Admin
         public ActionResult Index()
-        {
-            return View();
-        }
-
-        public ActionResult Users()
-        {
-            
-           return View( _userService.GetAllUserAndRole() );
-        }
-
-        public ActionResult Courses()
-        {
-            
-            return View(_coursesService.GetAllCourses());
-        }
-
-        public ActionResult Create()
-        {
-
-            return View();
-        }
-
-        public ActionResult Edit(string id)
-        {
-            
-            return View(_userService.GetRoleModelViewByID(id));
-        }
-
-        public ActionResult Details(string id)
-        {
-            return View();
-        }
-
-        public ActionResult Delete(string id)
         {
             return View();
         }
