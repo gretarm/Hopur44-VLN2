@@ -11,10 +11,10 @@
 </ol>
 
  
-@Html.ActionLink("Assignment", "Assignments", new { id = Model.CourseID }, new { @class = "btn btn-default" })
+@Html.ActionLink("Assignments", "Assignments", new { id = Model.CourseID }, new { @class = "btn btn-default" })
 @if (User.IsInRole("Student"))
 {
 @Html.ActionLink("My Grade", "Grade", new { id = Model.CourseID }, new { @class = "btn btn-default" })
 }
 @Html.ActionLink("Students in course", "Students", new { id = Model.CourseID }, new { @class = "btn btn-default" })
-@Html.ActionLink("My Teacher", "Teachers", new { id = Model.CourseID }, new { @class = "btn btn-default" })
+@Html.ActionLink("Teachers", "Teachers", new { id = Model.CourseID }, new { @class = "btn btn-default" })

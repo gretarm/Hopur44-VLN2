@@ -41,7 +41,6 @@ namespace Mooshak2.Controllers
             if (id == null)
             {
 				throw new MissingIdException();
-
 			}
             var asi = _assignmentService.GetAssignmentsInCourse(id.Value);
 
