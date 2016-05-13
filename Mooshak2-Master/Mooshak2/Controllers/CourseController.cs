@@ -84,7 +84,7 @@ namespace Mooshak2.Controllers
             }
             var courses = _coursesService.GetStudentsInCourse(id.Value);
 
-			if (courses == null)
+			if (!(courses.Count > 0))
 			{
 				throw new NoStudentInCourseException();
 			}
