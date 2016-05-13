@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace Mooshak2.Models
+namespace Mooshak2.Models.ViewModels
 {
     public class ExternalLoginConfirmationViewModel
     {

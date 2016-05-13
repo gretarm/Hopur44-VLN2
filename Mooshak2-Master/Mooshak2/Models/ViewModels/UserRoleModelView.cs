@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
-using System.Web.Security;
 using System.Web.Mvc;
-using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace Mooshak2.Models.ViewModels
 {
@@ -13,9 +8,6 @@ namespace Mooshak2.Models.ViewModels
     {
         public string UserID { get; set; }
 
-        [Required]
-        [EmailAddress]
-        [Display(Name = "Email")]
         public string Email { get; set; }
 
         [Required]
@@ -29,7 +21,6 @@ namespace Mooshak2.Models.ViewModels
         [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
-        [Required]
         public string Role { get; set; }
 
         public IEnumerable<SelectListItem> AllRoles { get; set; }

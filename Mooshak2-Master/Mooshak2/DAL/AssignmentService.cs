@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Mooshak2.Models;
 using Mooshak2.Models.Entities;
 using Mooshak2.Models.ViewModels;
 
@@ -8,7 +7,6 @@ namespace Mooshak2.DAL
 {
     public class AssignmentService
     {
-
         private readonly ApplicationDbContext _dbContext = new ApplicationDbContext();
 
         public IEnumerable<Assignment> GetAllAssignments()

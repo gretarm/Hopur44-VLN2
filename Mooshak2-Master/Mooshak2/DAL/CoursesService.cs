@@ -11,8 +11,9 @@ namespace Mooshak2.DAL
 {
     public class CoursesService
     {
-        private ApplicationDbContext _dbContext = new ApplicationDbContext();
+        private readonly ApplicationDbContext _dbContext = new ApplicationDbContext();
 
+        
         public IEnumerable<Course> GetAllCourses()
         {
             IEnumerable<Course> courses = (from c in _dbContext.Courses
@@ -80,6 +81,8 @@ namespace Mooshak2.DAL
                 select new TeacherViewModel {ID = teachment, Title = course, Name = users}).ToList();
             return asi;
         }
+
+
 
         public Course AddNewCourse(Course model)
         {

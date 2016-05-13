@@ -1,23 +1,24 @@
-﻿@model Mooshak2.Models.ViewModels.StudentViewModel
-    @using Microsoft.AspNet.Identity
-
+﻿@model List<Mooshak2.Models.Entities.Course>
 @{
-    ViewBag.Title = "Home";
+    ViewBag.Title = "User";
 }
 
-<h2>Welcome back, @User.Identity.GetUserName()</h2>
+<h2>Students</h2>
 
-<div class="mainContent body-content col-md-¨4">
-    
-    @foreach (var item in Model.Courses)
-    {       
-         <div class="col-md-6">
-             <h2>@Html.DisplayFor(modelItem => item.Title)</h2>
-             <p>
-                 @Html.DisplayFor(modelItem => item.Details)
-             </p>
+<<div class="row">
+    <div class="col-md-12">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4">
+                <h2>@item.Title</h2>
+                <p>@item.Details</p>
+                <p>@Html.ActionLink("Go to course", "ID","Course", new { id = item.CourseID }, new { @class = "btn btn-default" })</p>
+            </div>
+        }
 
-             @Html.ActionLink("Go to course \u00BB", "../Course/ID", new { id = item.CourseID }, new { @class = "btn btn-default" })
-        </div>
-    }
+    </div>
+
+
+
 </div>
+

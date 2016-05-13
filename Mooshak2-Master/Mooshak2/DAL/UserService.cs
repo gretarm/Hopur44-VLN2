@@ -1,18 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
 using Mooshak2.Models;
-using Mooshak2.Models.Entities;
 using Mooshak2.Models.ViewModels;
-using System.Web.Helpers;
-using System.Web.WebPages.Html;
-using System.Web.Security;
-using System.Web.UI;
-using Mooshak2.DAL;
 using System;
-using System.Web.Mvc;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Mooshak2.Models.Entities;
 
 
 namespace Mooshak2.DAL
@@ -24,6 +17,26 @@ namespace Mooshak2.DAL
     public class UserService
     {
         private readonly ApplicationDbContext _dbContext = new ApplicationDbContext();
+        private CoursesService _coursesService = new CoursesService();
+
+        public bool RoleExists(string name)
+        {
+            var rm = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new ApplicationDbContext()));
+            return rm.RoleExists(name);
+        }
+        
+        public bool UserIsInRole(string userId, string roleName)
+        {
+            var um = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+            var result = um.IsInRole(userId, roleName);
+            return result;
+        }
+
+        public ApplicationUser GetUserByName(string name)
+        {
+            var um = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+            return um.FindByName(name);
+        }
 
         public List<ApplicationUser> GetAllUsers()
         {
@@ -46,66 +59,6 @@ namespace Mooshak2.DAL
             var userInRole = (from item in allUsers where item.Role == role orderby item.Email select item);
 
             return userInRole;
-        }
-    
-        public bool RoleExists(string name)
-        {
-            var rm = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new ApplicationDbContext()));
-            return rm.RoleExists(name);
-        }
-
-        public bool CreateRole(string name)
-        {
-            var rm = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new ApplicationDbContext()));
-            var idResult = rm.Create(new IdentityRole(name));
-            return idResult.Succeeded;
-        }
-
-        public bool UserExists(string name)
-        {
-            var um = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
-            return um.FindByName(name) != null;
-        }
-
-        public ApplicationUser GetUserByName(string name)
-        {
-            var um = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
-            return um.FindByName(name);
-        }
-
-        public bool CreateUser(ApplicationUser user, string password)
-        {
-            var um = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
-            var idResult = um.Create(user, password);
-            return idResult.Succeeded;
-        }
-
-        public bool AddUserToRole(string userId, string roleName)
-        {
-            var um = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
-            var idResult = um.AddToRole(userId, roleName);
-            return idResult.Succeeded;
-        }
-
-        public bool UserIsInRole(string userId, string roleName)
-        {
-            var um = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
-            var result = um.IsInRole(userId, roleName);
-            return result;
-        }
-
-        public void ClearUserRoles(string userId)
-        {
-            var um = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
-            var rm = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new ApplicationDbContext()));
-            var user = um.FindById(userId);
-            var currentRoles = new List<IdentityUserRole>();
-            currentRoles.AddRange(user.Roles);
-            foreach (var role in currentRoles)
-            {
-                var r = rm.FindById(role.RoleId);
-                um.RemoveFromRole(userId, r.Name);
-            }
         }
 
         public IList<string> GetUserRoles(string userId)
@@ -136,6 +89,7 @@ namespace Mooshak2.DAL
             };
             return user;
         }
+
         public UserRoleModelView GetRoleModelView()
         {
 
@@ -149,12 +103,21 @@ namespace Mooshak2.DAL
             };
             return user;
         }
+
         public ApplicationUser GetUserById(string userid)
         {
             var um = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
             var user = (from u in _dbContext.Users where u.Id == userid select u).SingleOrDefault();
 
             return user;
+        }
+
+        public StudentViewModel GetStudentViewModel(string userId)
+        {
+            var stud = GetUserById(userId);
+            var corses = _coursesService.GetCoursesForStudent(stud);
+            var model = new StudentViewModel {Courses = corses, Name = stud};
+            return model;
         }
 
         public IEnumerable<System.Web.Mvc.SelectListItem> GetAllRoles()
@@ -170,10 +133,18 @@ namespace Mooshak2.DAL
             return allroles;
         }
 
+
+
+        public bool AddUserToRole(string userId, string roleName)
+        {
+            var um = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+            var idResult = um.AddToRole(userId, roleName);
+            return idResult.Succeeded;
+        }
+
         public void AddUser(UserRoleModelView user)
         {
             var um = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
-            var rm = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new ApplicationDbContext()));
             
             var newUser = new ApplicationUser {Email = user.Email,  UserName = user.Email};
             um.Create(newUser, user.Password);
@@ -207,6 +178,20 @@ namespace Mooshak2.DAL
                 AddUserToRole(user.UserID, role);
             }
             _dbContext.SaveChanges();
+        }
+
+        public void ClearUserRoles(string userId)
+        {
+            var um = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+            var rm = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new ApplicationDbContext()));
+            var user = um.FindById(userId);
+            var currentRoles = new List<IdentityUserRole>();
+            currentRoles.AddRange(user.Roles);
+            foreach (var role in currentRoles)
+            {
+                var r = rm.FindById(role.RoleId);
+                um.RemoveFromRole(userId, r.Name);
+            }
         }
     }
 }

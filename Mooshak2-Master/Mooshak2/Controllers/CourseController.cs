@@ -51,31 +51,7 @@ namespace Mooshak2.Controllers
             return View(asi);
         }
 
-        public ActionResult Grade(int? id)
-        {
-            /*
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
 
-            var grad = (from assignmentmile in DatabaseConnection.Db.Milestones
-                        join grade in DatabaseConnection.Db.Submissions
-                        on assignmentmile.ID equals grade.AssignmentMilestoneID
-                        join assignment in DatabaseConnection.Db.Assignments
-                        on assignmentmile.AssignmentID equals assignment.ID
-                        join assign_course in DatabaseConnection.Db.Courses
-                        on assignment.CourseID equals assign_course.CourseID
-                        select assignment.Title).ToList();
-
-            if (grad == null)
-            {
-                return HttpNotFound();
-            }
-            return View(grad);
-            */
-            return View();
-        }
         public ActionResult Students(int? id)
         {
             if (id == null)
@@ -106,6 +82,22 @@ namespace Mooshak2.Controllers
                 throw new NoTeacherInCourseException();
             }
             return View(asi);
+        }
+
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                throw new MissingIdException();
+            }
+            var course = _coursesService.GetCourseById(id.Value);
+
+            if (course == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(course);
         }
     }
 }

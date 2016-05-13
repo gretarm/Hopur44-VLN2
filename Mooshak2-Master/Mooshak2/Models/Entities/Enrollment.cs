@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Web;
-using Microsoft.AspNet.Identity.EntityFramework;
-using Mooshak2.Models;
-
+﻿
 
 namespace Mooshak2.Models.Entities
 {

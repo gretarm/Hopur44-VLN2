@@ -11,6 +11,7 @@ using Microsoft.Owin.Security;
 using Mooshak2.DAL;
 using Mooshak2.Models;
 using Mooshak2.Models.Entities;
+using Mooshak2.Models.ViewModels;
 
 namespace Mooshak2.Controllers
 {

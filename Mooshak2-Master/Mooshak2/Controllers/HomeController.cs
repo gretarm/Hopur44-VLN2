@@ -21,12 +21,8 @@ namespace Mooshak2.Controllers
           
             //TODO Implement exeption in case missing role
             var role = _userService.GetUserRoles(User.Identity.GetUserId())[0];
-            //Temp fix
-            if (role == "Admin") 
-            {
-                return View("Admin");
-            }
-            return RedirectToAction("Index", role);
+
+            return RedirectToAction(role);
         }
 
 
@@ -48,6 +44,19 @@ namespace Mooshak2.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult Admin()
         {
+            return View();
+        }
+
+        [Authorize(Roles = "Student")]
+        public ActionResult Student()
+        {
+            var student = _userService.GetStudentViewModel(User.Identity.GetUserId());
+
+            if (student.Courses.Count > 0)
+            {
+                return RedirectToAction("Index", "Student", student);
+            }
+            
             return View();
         }
     }

@@ -6,9 +6,6 @@
 
 <h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -17,6 +14,7 @@
         <th>
             @Html.DisplayNameFor(model => model.Details)
         </th>
+        <th></th>
     </tr>
 
 @foreach (var item in Model) {
@@ -26,6 +24,9 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Details)
+        </td>
+        <td>
+            @Html.ActionLink("Details", "Details", new { id = item.CourseID })
         </td>
     </tr>
 }
