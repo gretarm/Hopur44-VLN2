@@ -10,6 +10,7 @@ using Mooshak2.Models.Entities;
 using Microsoft.AspNet.Identity;
 using Mooshak2.Models.ViewModels;
 using Mooshak2.Exceptions;
+using System.IO;
 
 namespace Mooshak2.Controllers
 {
@@ -53,5 +54,26 @@ namespace Mooshak2.Controllers
 
 			return View(course);
 		}
-	}
+
+        public ActionResult Create_Assignment()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        public ActionResult Create_Assignment(IEnumerable<HttpPostedFileBase> files)
+        {
+            foreach (var file in files)
+            {
+                if (file.ContentLength > 0)
+                {
+                    var fileName = Path.GetFileName(file.FileName);
+                    var path = Path.Combine(Server.MapPath("~/App_Data/uploads"), fileName);
+                    file.SaveAs(path);
+                }
+            }
+            return RedirectToAction("Create_Assignment");
+        }
+    }
 }

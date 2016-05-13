@@ -331,8 +331,12 @@
     <Content Include="Views\UserManagement\Details.cshtml" />
     <Content Include="Views\UserManagement\Delete.cshtml" />
     <Content Include="Views\Home\Admin.cshtml" />
+
     <Content Include="Views\Shared\NoStudentError.cshtml" />
     <Content Include="Views\Shared\NoAssignedCoursesError.cshtml" />
+
+    <Content Include="Views\Teacher\Create_Assignment.cshtml" />
+
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
